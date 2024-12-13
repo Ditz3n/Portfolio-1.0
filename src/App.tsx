@@ -1,6 +1,7 @@
 import SectionNavigation from './components/SectionNavigation'
 import Home from './components/sections/Home'
 import About from './components/sections/About'
+import Experience from './components/sections/Experience'
 
 function App() {
   return (
@@ -11,13 +12,8 @@ function App() {
           <main className="flex-1 transition-all duration-300">
             <Home />
             <About />
-
-            <section id="experience" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300">
-              <div className="text-left max-w-3xl transition-all duration-300">
-                {/* Experience content */}
-              </div>
-            </section>
-
+            <Experience />
+            
             <section id="projects" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300">
               <div className="text-left max-w-3xl transition-all duration-300">
                 {/* Projects content */}

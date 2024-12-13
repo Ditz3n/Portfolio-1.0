@@ -21,7 +21,7 @@ export default function Home() {
             {language === 'da' ? 'Softwareingenørstuderende' : 'Software Engineering Student'}
           </AnimatedText>
           <AnimatedText className="block transition-all duration-300">
-            {language === 'da' ? 'hos AU University' : 'at AU University'}
+            {language === 'da' ? 'ved Aarhus Universitet' : 'at Aarhus University'}
           </AnimatedText>
         </div>
       </div>

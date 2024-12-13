@@ -17,11 +17,13 @@ export default function SectionNavigation() {
       <a
         key={i}
         href={`#${sectionIds[i]}`}
-        className={`text-sm tracking-widest uppercase transition-colors duration-200 text-center
+        className={`text-sm tracking-widest uppercase transition-all duration-200 relative
           ${activeSection === sectionIds[i]
-            ? 'text-[#79cbca] dark:text-[#79cbca]' 
+            ? 'text-[#79cbca] dark:text-[#79cbca] md:translate-x-[-20px]' 
             : 'text-gray-500 dark:text-gray-400 hover:text-[#79cbca] dark:hover:text-[#79cbca]'
-          }`}
+          }
+          ${activeSection === sectionIds[i] ? 'md:after:content-[""] md:after:absolute md:after:right-[-30px] md:after:top-1/2 md:after:-translate-y-1/2 md:after:w-[20px] md:after:h-[2px] md:after:bg-[#79cbca]' : ''}
+        `}
       >
         {text}
       </a>
