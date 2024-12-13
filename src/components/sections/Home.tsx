@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300">
-      <div className="text-left max-w-3xl transition-all duration-300">
+      <div className="text-left max-w-3xl transition-all duration-300 -mt-16 sm:mt-0">
         <AnimatedText className="text-gray-800 dark:text-white font-bold text-3xl sm:text-4xl lg+:text-5xl mb-4 transition-all duration-300">
           {language === 'da' ? 'Velkommen! Jeg hedder' : 'Hey there! My name is'}
         </AnimatedText>
