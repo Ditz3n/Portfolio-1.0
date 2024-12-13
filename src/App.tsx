@@ -4,9 +4,9 @@ import About from './components/sections/About'
 
 function App() {
   return (
-    <div className="w-full min-h-screen bg-white dark:bg-[#1a1a1a] transition-colors duration-300">
+    <div className="w-full min-h-screen bg-white dark:bg-[#1a1a1a] transition-colors duration-300 overflow-x-hidden fixed-container">
       <div className="fixed top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] z-40"></div>
-      <div className="pt-[4px] relative">
+      <div className="pt-[4px] relative overflow-y-auto h-screen">
         <div className="flex">
           <main className="flex-1 transition-all duration-300">
             <Home />
