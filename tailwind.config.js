@@ -11,7 +11,6 @@ module.exports = {
         'charcoal': '#36454F',
       },
       fontFamily: {
-        emoji: ['"Noto Color Emoji"', 'sans-serif'],
       },
       keyframes: {
         fade: {
