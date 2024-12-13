@@ -5,7 +5,7 @@ export default function About() {
   const { language } = useLanguage()
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300">
+    <section id="about" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300 pt-16">
       <div className="text-left max-w-3xl transition-all duration-300">
         <h2 className="text-5xl sm:text-6xl font-bold mb-12 text-gray-800 dark:text-white">
           {language === 'da' ? 'Om mig' : 'About me'}
@@ -33,17 +33,18 @@ export default function About() {
             ) : (
               <>
                 <p>
-                  Hey! I'm Mads. I'm currently a Software Engineering student at Aarhus University, 
+                  Hi! I'm Mads. I'm currently a software engineering student at Aarhus University, 
                   specializing in web development and software architecture.
                 </p>
                 <p>
-                  My journey in programming started with a fascination for web development and user 
-                  interfaces. Since then, I've worked with various technologies and frameworks, 
+                  My journey into programming began with a fascination for web development and 
+                  user interfaces. Since then, I've worked with various technologies and frameworks, 
                   with a particular focus on React and modern frontend development.
                 </p>
                 <p>
-                  Alongside my studies, I work on various personal projects where I experiment with 
-                  new technologies and improve my skills. This website is one of those projects!
+                  Alongside my studies, I work on various personal projects, 
+                  where I experiment with new technologies and improve my skills. 
+                  This website is one of those projects!
                 </p>
               </>
             )}

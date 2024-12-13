@@ -5,7 +5,7 @@ export default function Home() {
   const { language } = useLanguage()
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300 pt-12 sm:pt-16">
+    <section id="home" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300 pt-0">
       <div className="text-left max-w-3xl transition-all duration-300">
         <AnimatedText className="text-gray-800 dark:text-white font-bold text-3xl sm:text-4xl lg+:text-5xl mb-4 transition-all duration-300">
           {language === 'da' ? 'Velkommen! Jeg hedder' : 'Hey there! My name is'}

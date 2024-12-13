@@ -12,11 +12,18 @@ export default function SectionNavigation() {
 
   const sectionIds = ['about', 'experience', 'projects']
 
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   const renderNavLinks = (items: string[]) => (
     items.map((text, i) => (
       <a
         key={i}
-        href={`#${sectionIds[i]}`}
+        onClick={() => handleScroll(sectionIds[i])}
         className={`text-sm tracking-widest uppercase transition-all duration-200 relative
           ${activeSection === sectionIds[i]
             ? 'text-[#79cbca] dark:text-[#79cbca] md:translate-x-[-20px]' 
