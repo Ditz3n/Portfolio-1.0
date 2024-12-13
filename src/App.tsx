@@ -90,7 +90,7 @@ function App() {
                         {/* Hover overlay with text */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <p className="text-white text-xl font-bold">
-                            Hello World! <span className="font-emoji">🎉</span>
+                            {language === 'da' ? 'Hej Verden!' : 'Hello World!'} <span className="font-emoji">🎉</span>
                           </p>
                         </div>
                       </div>
