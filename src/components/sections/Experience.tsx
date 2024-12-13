@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLanguage } from '../../context/LanguageContext'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
+import ProgrammingLanguages from '../ProgrammingLanguages'
 
 interface Course {
   id: string
@@ -93,107 +94,132 @@ export default function Experience() {
         <h2 className="text-5xl sm:text-6xl font-bold mb-12 text-gray-800 dark:text-white">
           {language === 'da' ? 'Erfaring' : 'Experience'}
         </h2>
-        
-        <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300">
-          {language === 'da' 
-            ? 'Nedenfor kan du se min nuværende progression gennem min diplomingeniøruddannelse i softwareteknologi ved Aarhus Universitet. Grønne felter indikerer beståede kurser.'
-            : 'Below you can see my current progress through my Bachelor of Engineering degree in Software Technology at Aarhus University. Green fields indicate completed courses.'
-          }
-        </p>
-        
-        <div className="overflow-x-auto transition-all duration-300">
-          <div className="w-full max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300 space-y-4">
-            {Object.entries(groupedCourses).map(([semester, semesterCourses]) => {
-              const semesterNum = Number(semester)
-              const isOpen = openSemesters.includes(semesterNum)
-              return (
-                <div key={semester} className="relative rounded-lg overflow-hidden p-[1px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae]">
-                  <div className="bg-white dark:bg-[#1a1a1a] rounded-lg overflow-hidden">
-                    <button
-                      onClick={() => toggleSemester(semesterNum)}
-                      className="w-full px-4 py-4 flex items-center justify-between text-left bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800/80 transition-colors duration-200"
-                    >
-                      <div className="flex items-center space-x-4">
-                        <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
-                          {language === 'da' 
-                            ? semesterTitles.da[semesterNum - 1] 
-                            : semesterTitles.en[semesterNum - 1]
-                          }
-                        </span>
-                        <span className="text-sm text-gray-500 dark:text-gray-500">
-                          ({semesterCourses.reduce((acc, course) => acc + course.ects, 0)} ECTS)
-                        </span>
+
+        <div className="space-y-16">
+          {/* Education Section */}
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-gray-800 dark:text-white">
+              {language === 'da' ? 'Uddannelse' : 'Education'}
+            </h3>
+            
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300">
+              {language === 'da' 
+                ? 'Nedenfor kan du se min nuværende progression gennem min diplomingeniøruddannelse i softwareteknologi ved Aarhus Universitet. Grønne felter indikerer beståede kurser.'
+                : 'Below you can see my current progress through my Bachelor of Engineering degree in Software Technology at Aarhus University. Green fields indicate completed courses.'
+              }
+            </p>
+            
+            <div className="overflow-x-auto transition-all duration-300">
+              <div className="w-full max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300 space-y-4">
+                {Object.entries(groupedCourses).map(([semester, semesterCourses]) => {
+                  const semesterNum = Number(semester)
+                  const isOpen = openSemesters.includes(semesterNum)
+                  return (
+                    <div key={semester} className="relative rounded-lg overflow-hidden p-[1px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae]">
+                      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg overflow-hidden">
+                        <button
+                          onClick={() => toggleSemester(semesterNum)}
+                          className="w-full px-4 py-4 flex items-center justify-between text-left bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800/80 transition-colors duration-200"
+                        >
+                          <div className="flex items-center space-x-4">
+                            <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                              {language === 'da' 
+                                ? semesterTitles.da[semesterNum - 1] 
+                                : semesterTitles.en[semesterNum - 1]
+                              }
+                            </span>
+                            <span className="text-sm text-gray-500 dark:text-gray-500">
+                              ({semesterCourses.reduce((acc, course) => acc + course.ects, 0)} ECTS)
+                            </span>
+                          </div>
+                          <svg
+                            className={`w-5 h-5 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        
+                        {isOpen && (
+                          <div className="border-t border-gray-200/50 dark:border-gray-700/50">
+                            <table className="w-full">
+                              <thead>
+                                <tr className="border-b border-gray-200 dark:border-gray-700">
+                                  <th className="py-2 sm:py-4 px-2 sm:px-4 text-left text-[10px] sm:text-sm text-gray-600 dark:text-gray-400">
+                                    {language === 'da' ? 'ID' : 'ID'}
+                                  </th>
+                                  <th className="py-2 sm:py-4 px-2 sm:px-4 text-left text-[10px] sm:text-sm text-gray-600 dark:text-gray-400">
+                                    {language === 'da' ? 'Navn' : 'Name'}
+                                  </th>
+                                  <th className="py-2 sm:py-4 px-2 sm:px-4 text-right text-[10px] sm:text-sm text-gray-600 dark:text-gray-400">ECTS</th>
+                                  <th className="py-2 sm:py-4 px-2 sm:px-4 text-center text-[10px] sm:text-sm text-gray-600 dark:text-gray-400">
+                                    {language === 'da' ? 'Status' : 'Status'}
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {semesterCourses.map((course) => (
+                                  <tr 
+                                    key={course.id}
+                                    className={`border-b border-gray-200 dark:border-gray-700 transition-all duration-300
+                                      ${course.completed ? 'bg-green-50 dark:bg-green-900/10' : ''}`}
+                                  >
+                                    <td className="py-2 sm:py-4 px-2 sm:px-4 text-[10px] sm:text-sm text-gray-800 dark:text-gray-200">{course.id}</td>
+                                    <td className="py-2 sm:py-4 px-2 sm:px-4 text-[10px] sm:text-sm text-gray-800 dark:text-gray-200 break-words">{course.name}</td>
+                                    <td className="py-2 sm:py-4 px-2 sm:px-4 text-[10px] sm:text-sm text-right text-gray-800 dark:text-gray-200">{course.ects}</td>
+                                    <td className="py-2 sm:py-4 px-2 sm:px-4 text-center">
+                                      {course.completed && (
+                                        <CheckCircleIcon className="w-3 h-3 sm:w-5 sm:h-5 text-green-500 mx-auto" />
+                                      )}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        )}
                       </div>
-                      <svg
-                        className={`w-5 h-5 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    
-                    {isOpen && (
-                      <div className="border-t border-gray-200/50 dark:border-gray-700/50">
-                        <table className="w-full">
-                          <thead>
-                            <tr className="border-b border-gray-200 dark:border-gray-700">
-                              <th className="py-2 sm:py-4 px-2 sm:px-4 text-left text-[10px] sm:text-sm text-gray-600 dark:text-gray-400">
-                                {language === 'da' ? 'ID' : 'ID'}
-                              </th>
-                              <th className="py-2 sm:py-4 px-2 sm:px-4 text-left text-[10px] sm:text-sm text-gray-600 dark:text-gray-400">
-                                {language === 'da' ? 'Navn' : 'Name'}
-                              </th>
-                              <th className="py-2 sm:py-4 px-2 sm:px-4 text-right text-[10px] sm:text-sm text-gray-600 dark:text-gray-400">ECTS</th>
-                              <th className="py-2 sm:py-4 px-2 sm:px-4 text-center text-[10px] sm:text-sm text-gray-600 dark:text-gray-400">
-                                {language === 'da' ? 'Status' : 'Status'}
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {semesterCourses.map((course) => (
-                              <tr 
-                                key={course.id}
-                                className={`border-b border-gray-200 dark:border-gray-700 transition-all duration-300
-                                  ${course.completed ? 'bg-green-50 dark:bg-green-900/10' : ''}`}
-                              >
-                                <td className="py-2 sm:py-4 px-2 sm:px-4 text-[10px] sm:text-sm text-gray-800 dark:text-gray-200">{course.id}</td>
-                                <td className="py-2 sm:py-4 px-2 sm:px-4 text-[10px] sm:text-sm text-gray-800 dark:text-gray-200 break-words">{course.name}</td>
-                                <td className="py-2 sm:py-4 px-2 sm:px-4 text-[10px] sm:text-sm text-right text-gray-800 dark:text-gray-200">{course.ects}</td>
-                                <td className="py-2 sm:py-4 px-2 sm:px-4 text-center">
-                                  {course.completed && (
-                                    <CheckCircleIcon className="w-3 h-3 sm:w-5 sm:h-5 text-green-500 mx-auto" />
-                                  )}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    )}
+                    </div>
+                  )
+                })}
+
+                {/* Progress bar */}
+                <div className="mt-8 space-y-2">
+                  <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
+                    <span className="font-semibold">
+                      {language === 'da' ? 'Samlet progression' : 'Total progress'}
+                    </span>
+                    <span>
+                      {completedECTS} / {totalECTS} ECTS ({Math.round(progressPercentage)}%)
+                    </span>
+                  </div>
+                  <div className="h-4 w-full bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden p-[1px]">
+                    <div 
+                      className="h-full rounded-full bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] transition-all duration-300"
+                      style={{ width: `${progressPercentage}%` }}
+                    />
                   </div>
                 </div>
-              )
-            })}
-
-            {/* Progress bar */}
-            <div className="mt-8 space-y-2">
-              <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400">
-                <span className="font-semibold">
-                  {language === 'da' ? 'Samlet progression' : 'Total progress'}
-                </span>
-                <span>
-                  {completedECTS} / {totalECTS} ECTS ({Math.round(progressPercentage)}%)
-                </span>
-              </div>
-              <div className="h-4 w-full bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden p-[1px]">
-                <div 
-                  className="h-full rounded-full bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] transition-all duration-300"
-                  style={{ width: `${progressPercentage}%` }}
-                />
               </div>
             </div>
+          </div>
+
+          {/* Programming Languages Section */}
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-gray-800 dark:text-white">
+              {language === 'da' ? 'Programmeringssprog' : 'Programming Languages'}
+            </h3>
+            
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300">
+              {language === 'da' 
+                ? 'Herunder kan du se de programmeringssprog og teknologier, som jeg har erfaring med gennem min uddannelse og personlige projekter.'
+                : 'Below you can see the programming languages and technologies that I have experience with through my education and personal projects.'
+              }
+            </p>
+
+            <ProgrammingLanguages />
           </div>
         </div>
       </div>
