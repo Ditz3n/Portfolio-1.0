@@ -9,7 +9,7 @@ const LoadingScreen = () => {
         size="50"
         stroke="4"
         speed="1.2"
-        color="white"
+        color={document.body.classList.contains('dark') ? "white" : "#424242"}
       ></l-cardio>
       {/* <p>Loading...</p> // Uncomment for testing */}
     </div>
