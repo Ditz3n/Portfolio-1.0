@@ -1,93 +1,11 @@
 import React from 'react'
 import { useLanguage } from '../../context/LanguageContext'
-import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import ProgrammingLanguages from '../ProgrammingLanguages'
 import Education from './Education'
-
-interface Course {
-  id: string
-  name: string
-  semester: number
-  ects: number
-  completed: boolean
-}
+import Tools from './Tools'
 
 export default function Experience() {
   const { language } = useLanguage()
-  
-  // Add semester titles
-  const semesterTitles = {
-    da: ['1. semester', '2. semester', '3. semester', '4. semester', '5. semester', '6. semester', '7. semester'],
-    en: ['1st semester', '2nd semester', '3rd semester', '4th semester', '5th semester', '6th semester', '7th semester']
-  }
-
-  const courses: Course[] = [
-    // 1. semester
-    { id: 'SW1MSYS-01', name: language === 'da' ? 'Microcontroller systemer' : 'Microcontroller Systems', semester: 1, ects: 5, completed: true },
-    { id: 'SW1OPRO-01', name: language === 'da' ? 'Objektorienteret programmering' : 'Object-Oriented Programming', semester: 1, ects: 5, completed: true },
-    { id: 'SW1IDE-01', name: language === 'da' ? 'Indledende digital elektronik' : 'Introduction to Digital Electronics', semester: 1, ects: 5, completed: true },
-    { id: 'SW1KLT-01', name: language === 'da' ? 'Indledende kredsløbsteknik' : 'Introduction to Circuit Technology', semester: 1, ects: 5, completed: true },
-    { id: 'SW1MML5-01', name: language === 'da' ? 'Matematik modellering af lineære systemer' : 'Mathematical Modeling of Linear Systems', semester: 1, ects: 5, completed: true },
-    { id: 'SW1PRJ1-01', name: language === 'da' ? 'Projekt 1' : 'Project 1', semester: 1, ects: 5, completed: true },
-
-    // 2. semester
-    { id: 'SW2ISE-01', name: language === 'da' ? 'Indledende System Engineering' : 'Introduction to System Engineering', semester: 2, ects: 5, completed: true },
-    { id: 'SW2OOP-01', name: language === 'da' ? 'Objektorienteret programmering' : 'Object-Oriented Programming', semester: 2, ects: 5, completed: true },
-    { id: 'SW2PLA-01', name: language === 'da' ? 'Praktisk lineær algebra for softwareudviklere' : 'Practical Linear Algebra for Software Developers', semester: 2, ects: 10, completed: true },
-    { id: 'SW2FYS-01', name: language === 'da' ? 'Grundmodeller til den fysiske verden' : 'Basic Models of the Physical World', semester: 2, ects: 5, completed: true },
-    { id: 'SW2PRJ2-01', name: language === 'da' ? 'Semesterprojekt 2' : 'Semester Project 2', semester: 2, ects: 5, completed: true },
-
-    // 3. semester
-    { id: 'SW3ISU-01', name: language === 'da' ? 'Indlejret softwareudvikling' : 'Embedded Software Development', semester: 3, ects: 5, completed: true },
-    { id: 'SW3ALG-01', name: language === 'da' ? 'Algoritmer og datastrukturer' : 'Algorithms and Data Structures', semester: 3, ects: 5, completed: true },
-    { id: 'SW3DSB-01', name: language === 'da' ? 'Digital signalbehandling' : 'Digital Signal Processing', semester: 3, ects: 5, completed: true },
-    { id: 'SW3HAL-01', name: language === 'da' ? 'Hardware abstraktioner' : 'Hardware Abstractions', semester: 3, ects: 5, completed: true },
-    { id: 'SW3NGK-01', name: language === 'da' ? 'Netværksprogrammering og grundlæggende kommunikationsnetværk' : 'Network Programming and Basic Communication Networks', semester: 3, ects: 5, completed: true },
-    { id: 'SW3PRJ3-01', name: language === 'da' ? 'Semesterprojekt 3' : 'Semester Project 3', semester: 3, ects: 5, completed: true },
-
-    // 4. semester (current)
-    { id: 'SW4BAD-01', name: language === 'da' ? 'Back-end udvikling og databaser' : 'Back-end Development and Databases', semester: 4, ects: 10, completed: false },
-    { id: 'SW4FED-02', name: language === 'da' ? 'Front-end udvikling' : 'Front-end Development', semester: 4, ects: 5, completed: false },
-    { id: 'SW4SWD-01', name: language === 'da' ? 'Softwaredesign' : 'Software Design', semester: 4, ects: 5, completed: false },
-    { id: 'SW4SWT-01', name: language === 'da' ? 'Softwaretest' : 'Software Testing', semester: 4, ects: 5, completed: false },
-    { id: 'SW4PRJ4-01', name: language === 'da' ? 'Semesterprojekt 4' : 'Semester Project 4', semester: 4, ects: 5, completed: false },
-
-    // 5. semester
-    { id: 'ESPRJ-01', name: language === 'da' ? 'Ingeniørpraktik' : 'Engineering Internship', semester: 5, ects: 30, completed: false },
-
-    // 6. semester
-    { id: 'VALGFRI', name: language === 'da' ? 'Valgfrie kurser' : 'Elective Courses', semester: 6, ects: 30, completed: false },
-
-    // 7. semester
-    { id: 'VALGFRI', name: language === 'da' ? 'Valgfrie kurser' : 'Elective Courses', semester: 7, ects: 10, completed: false },
-    { id: 'SW7BAC-01', name: language === 'da' ? 'Bachelorprojekt' : 'Bachelor Project', semester: 7, ects: 20, completed: false },
-  ]
-
-  // Add state for tracking open semesters
-  const [openSemesters, setOpenSemesters] = React.useState<number[]>([])
-
-  // Calculate total ECTS and completed ECTS
-  const totalECTS = courses.reduce((acc, course) => acc + course.ects, 0)
-  const completedECTS = courses.reduce((acc, course) => course.completed ? acc + course.ects : acc, 0)
-  const progressPercentage = (completedECTS / totalECTS) * 100
-
-  // Toggle function for opening/closing semesters
-  const toggleSemester = (semesterNum: number) => {
-    setOpenSemesters(prev => 
-      prev.includes(semesterNum)
-        ? prev.filter(num => num !== semesterNum)
-        : [...prev, semesterNum]
-    )
-  }
-
-  // Helper function to group courses by semester
-  const groupedCourses = courses.reduce((acc, course) => {
-    if (!acc[course.semester]) {
-      acc[course.semester] = [];
-    }
-    acc[course.semester].push(course);
-    return acc;
-  }, {} as Record<number, Course[]>);
 
   return (
     <section id="experience" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300 pt-16">
@@ -98,28 +16,18 @@ export default function Experience() {
 
         <div className="space-y-16">
           {/* Education Section */}
-          <Education 
-            courses={courses} 
-            completedECTS={completedECTS} 
-            totalECTS={totalECTS} 
-            progressPercentage={progressPercentage} 
-          />
+          <Education />
           
           {/* Programming Languages Section */}
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-gray-800 dark:text-white">
               {language === 'da' ? 'Programmeringssprog' : 'Programming Languages'}
             </h3>
-            
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300">
-              {language === 'da' 
-                ? 'Herunder kan du se de programmeringssprog og teknologier, som jeg har erfaring med gennem min uddannelse og personlige projekter.'
-                : 'Below you can see the programming languages and technologies that I have experience with through my education and personal projects.'
-              }
-            </p>
-
             <ProgrammingLanguages />
           </div>
+
+          {/* Tools Section */}
+          <Tools />
         </div>
       </div>
     </section>

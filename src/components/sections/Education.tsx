@@ -10,22 +10,58 @@ interface Course {
   completed: boolean
 }
 
-const Education = ({ courses, completedECTS, totalECTS, progressPercentage }: {
-  courses: Course[],
-  completedECTS: number,
-  totalECTS: number,
-  progressPercentage: number
-}) => {
+const Education = () => {
   const { language } = useLanguage()
-  
+
+  const courses: Course[] = [
+    // 1. semester
+    { id: 'SW1MSYS-01', name: language === 'da' ? 'Microcontroller systemer' : 'Microcontroller Systems', semester: 1, ects: 5, completed: true },
+    { id: 'SW1OPRO-01', name: language === 'da' ? 'Objektorienteret programmering' : 'Object-Oriented Programming', semester: 1, ects: 5, completed: true },
+    { id: 'SW1IDE-01', name: language === 'da' ? 'Indledende digital elektronik' : 'Introduction to Digital Electronics', semester: 1, ects: 5, completed: true },
+    { id: 'SW1KLT-01', name: language === 'da' ? 'Indledende kredsløbsteknik' : 'Introduction to Circuit Technology', semester: 1, ects: 5, completed: true },
+    { id: 'SW1MML5-01', name: language === 'da' ? 'Matematik modellering af lineære systemer' : 'Mathematical Modeling of Linear Systems', semester: 1, ects: 5, completed: true },
+    { id: 'SW1PRJ1-01', name: language === 'da' ? 'Projekt 1' : 'Project 1', semester: 1, ects: 5, completed: true },
+
+    // 2. semester
+    { id: 'SW2ISE-01', name: language === 'da' ? 'Indledende System Engineering' : 'Introduction to System Engineering', semester: 2, ects: 5, completed: true },
+    { id: 'SW2OOP-01', name: language === 'da' ? 'Objektorienteret programmering' : 'Object-Oriented Programming', semester: 2, ects: 5, completed: true },
+    { id: 'SW2PLA-01', name: language === 'da' ? 'Praktisk lineær algebra for softwareudviklere' : 'Practical Linear Algebra for Software Developers', semester: 2, ects: 10, completed: true },
+    { id: 'SW2FYS-01', name: language === 'da' ? 'Grundmodeller til den fysiske verden' : 'Basic Models of the Physical World', semester: 2, ects: 5, completed: true },
+    { id: 'SW2PRJ2-01', name: language === 'da' ? 'Semesterprojekt 2' : 'Semester Project 2', semester: 2, ects: 5, completed: true },
+
+    // 3. semester
+    { id: 'SW3ISU-01', name: language === 'da' ? 'Indlejret softwareudvikling' : 'Embedded Software Development', semester: 3, ects: 5, completed: true },
+    { id: 'SW3ALG-01', name: language === 'da' ? 'Algoritmer og datastrukturer' : 'Algorithms and Data Structures', semester: 3, ects: 5, completed: true },
+    { id: 'SW3DSB-01', name: language === 'da' ? 'Digital signalbehandling' : 'Digital Signal Processing', semester: 3, ects: 5, completed: true },
+    { id: 'SW3HAL-01', name: language === 'da' ? 'Hardware abstraktioner' : 'Hardware Abstractions', semester: 3, ects: 5, completed: true },
+    { id: 'SW3NGK-01', name: language === 'da' ? 'Netværksprogrammering og grundlæggende kommunikationsnetværk' : 'Network Programming and Basic Communication Networks', semester: 3, ects: 5, completed: true },
+    { id: 'SW3PRJ3-01', name: language === 'da' ? 'Semesterprojekt 3' : 'Semester Project 3', semester: 3, ects: 5, completed: true },
+
+    // 4. semester (current)
+    { id: 'SW4BAD-01', name: language === 'da' ? 'Back-end udvikling og databaser' : 'Back-end Development and Databases', semester: 4, ects: 10, completed: false },
+    { id: 'SW4FED-02', name: language === 'da' ? 'Front-end udvikling' : 'Front-end Development', semester: 4, ects: 5, completed: false },
+    { id: 'SW4SWD-01', name: language === 'da' ? 'Softwaredesign' : 'Software Design', semester: 4, ects: 5, completed: false },
+    { id: 'SW4SWT-01', name: language === 'da' ? 'Softwaretest' : 'Software Testing', semester: 4, ects: 5, completed: false },
+    { id: 'SW4PRJ4-01', name: language === 'da' ? 'Semesterprojekt 4' : 'Semester Project 4', semester: 4, ects: 5, completed: false },
+
+    // 5. semester
+    { id: 'ESPRJ-01', name: language === 'da' ? 'Ingeniørpraktik' : 'Engineering Internship', semester: 5, ects: 30, completed: false },
+
+    // 6. semester
+    { id: 'VALGFRI', name: language === 'da' ? 'Valgfrie kurser' : 'Elective Courses', semester: 6, ects: 30, completed: false },
+
+    // 7. semester
+    { id: 'VALGFRI', name: language === 'da' ? 'Valgfrie kurser' : 'Elective Courses', semester: 7, ects: 10, completed: false },
+    { id: 'SW7BAC-01', name: language === 'da' ? 'Bachelorprojekt' : 'Bachelor Project', semester: 7, ects: 20, completed: false },
+  ]
+
   // Tilføj tilstand til at holde styr på åbne semestre
   const [openSemesters, setOpenSemesters] = useState<number[]>([])
 
-  // Add semester titles
-  const semesterTitles = {
-    da: ['1. semester', '2. semester', '3. semester', '4. semester', '5. semester', '6. semester', '7. semester'],
-    en: ['1st semester', '2nd semester', '3rd semester', '4th semester', '5th semester', '6th semester', '7th semester']
-  }
+  // Beregn total ECTS og beståede ECTS
+  const totalECTS = courses.reduce((acc, course) => acc + course.ects, 0)
+  const completedECTS = courses.reduce((acc, course) => course.completed ? acc + course.ects : acc, 0)
+  const progressPercentage = (completedECTS / totalECTS) * 100
 
   // Helper function to group courses by semester
   const groupedCourses = courses.reduce((acc, course) => {
@@ -71,10 +107,7 @@ const Education = ({ courses, completedECTS, totalECTS, progressPercentage }: {
                   >
                     <div className="flex items-center space-x-4">
                       <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
-                        {language === 'da' 
-                          ? semesterTitles.da[semesterNum - 1] 
-                          : semesterTitles.en[semesterNum - 1]
-                        }
+                        {language === 'da' ? `Semester ${semesterNum}` : `Semester ${semesterNum}`}
                       </span>
                       <span className="text-sm text-gray-500 dark:text-gray-500">
                         ({semesterCourses.reduce((acc, course) => acc + course.ects, 0)} ECTS)
