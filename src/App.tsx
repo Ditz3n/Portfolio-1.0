@@ -2,6 +2,7 @@ import SectionNavigation from './components/SectionNavigation'
 import Home from './components/sections/Home'
 import About from './components/sections/About'
 import Experience from './components/sections/Experience'
+import { TailwindIndicator } from './components/TailwindIndicator'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           </main>
 
           <SectionNavigation />
+          <TailwindIndicator />
         </div>
       </div>
     </div>

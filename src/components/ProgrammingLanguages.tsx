@@ -2,9 +2,12 @@
 import reactLogo from '../assets/logos/react_logo.png'
 import cssLogo from '../assets/logos/css_logo.png'
 import htmlLogo from '../assets/logos/html_logo.png'
+import javaScriptLogo from '../assets/logos/javascript_logo.png'
+import typescriptLogo from '../assets/logos/typescript_logo.png'
 import csharpLogo from '../assets/logos/c_sharp_logo.png'
 import cppLogo from '../assets/logos/cpp_logo.png'
 import pythonLogo from '../assets/logos/python_logo.png'
+import mongodbLogo from '../assets/logos/mongodb_logo.png'
 
 interface Language {
   name: string
@@ -27,6 +30,14 @@ export default function ProgrammingLanguages() {
       logoUrl: htmlLogo,
     },
     { 
+      name: 'JavaScript',
+      logoUrl: javaScriptLogo,
+    },
+    { 
+      name: 'TypeScript',
+      logoUrl: typescriptLogo,
+    },
+    { 
       name: 'C#',
       logoUrl: csharpLogo,
     },
@@ -37,6 +48,10 @@ export default function ProgrammingLanguages() {
     { 
       name: 'Python',
       logoUrl: pythonLogo,
+    },
+    { 
+      name: 'MongoDB',
+      logoUrl: mongodbLogo,
     }
   ]
 
