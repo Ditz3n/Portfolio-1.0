@@ -60,12 +60,12 @@ function App() {
           {/* Modal */}
           {isModalOpen && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" onClick={closeModal}>
-              <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] rounded-lg p-[2px]">
-                <div className="dark:bg-[#1a1a1a] bg-white rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
+              <div className={`rounded-lg p-[2px] ${document.body.classList.contains('dark') ? 'bg-[#1a1a1a]' : 'bg-white'} mx-4 sm:mx-0`}>
+                <div className="rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
                   <h2 className="text-2xl font-bold mb-4 dark:text-white text-gray-700">{selectedProject?.title}</h2>
                   <img src={selectedProject?.imageUrl} alt={selectedProject?.title} className="w-full h-48 object-cover mb-4 rounded-lg shadow-md" />
                   <p className="dark:text-white text-gray-700">{selectedProject?.description[language]}</p>
-                  <button className={'mt-4 px-4 py-2 rounded dark:bg-gray-300 dark:text-gray-700 bg-gray-300 dark:hover:bg-gray-400 dark:hover:text-gray-800 text-gray-700 hover:bg-gray-400 hover:text-gray-800 transition-colors duration-300'} onClick={closeModal}>
+                  <button className="mt-4 px-4 py-2 rounded bg-gray-300 text-gray-700 dark:bg-gray-500 dark:text-white" onClick={closeModal}>
                     Luk
                   </button>
                 </div>
