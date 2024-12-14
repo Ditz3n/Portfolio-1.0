@@ -52,8 +52,8 @@ export default function Home() {
                 {displayedText.split(' ')[1] || ''}
                 {displayedText === fullText && (
                   <span
-                    className={`inline-block transition-transform duration-300 ${
-                      dotPosition === 0 ? 'translate-y-0' : '-translate-y-1.5'
+                    className={`inline-block transition-opacity duration-150 ${
+                      dotPosition === 0 ? 'opacity-0' : 'opacity-100'
                     }`}
                     style={{ color: '#e684ae' }}
                   >
