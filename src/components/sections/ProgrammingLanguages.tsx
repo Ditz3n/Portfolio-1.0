@@ -1,4 +1,6 @@
 import { useLanguage } from '../../context/LanguageContext';
+
+// Importer forskellige logoer af programmeringssprog
 import reactLogo from '../../assets/logos/react_logo.png';
 import cssLogo from '../../assets/logos/css_logo.png';
 import htmlLogo from '../../assets/logos/html_logo.png';
@@ -9,19 +11,48 @@ import cppLogo from '../../assets/logos/cpp_logo.png';
 import pythonLogo from '../../assets/logos/python_logo.png';
 import mongodbLogo from '../../assets/logos/mongodb_logo.png';
 
+// Funktion til at tjekke hvilket sprog brugerens system bruger
 const ProgrammingLanguages = () => {
   const { language } = useLanguage();
 
+  // Liste over programmeringssprog med logoer
   const languages = [
-    { name: 'React/React Native', logoUrl: reactLogo },
-    { name: 'CSS', logoUrl: cssLogo },
-    { name: 'HTML', logoUrl: htmlLogo },
-    { name: 'JavaScript', logoUrl: javaScriptLogo },
-    { name: 'TypeScript', logoUrl: typescriptLogo },
-    { name: 'C#', logoUrl: csharpLogo },
-    { name: 'C++', logoUrl: cppLogo },
-    { name: 'Python', logoUrl: pythonLogo },
-    { name: 'MongoDB', logoUrl: mongodbLogo },
+    { 
+      name: 'React/React Native',
+      logoUrl: reactLogo,
+    },
+    { 
+      name: 'CSS',
+      logoUrl: cssLogo,
+    },
+    { 
+      name: 'HTML',
+      logoUrl: htmlLogo,
+    },
+    { 
+      name: 'JavaScript',
+      logoUrl: javaScriptLogo,
+    },
+    { 
+      name: 'TypeScript',
+      logoUrl: typescriptLogo,
+    },
+    { 
+      name: 'C#',
+      logoUrl: csharpLogo,
+    },
+    { 
+      name: 'C++',
+      logoUrl: cppLogo,
+    },
+    { 
+      name: 'Python',
+      logoUrl: pythonLogo,
+    },
+    { 
+      name: 'MongoDB',
+      logoUrl: mongodbLogo,
+    },
   ];
 
   return (

@@ -15,13 +15,34 @@ const Tools = () => {
 
   // Liste over værktøjer med logoer
   const tools = [
-    { name: 'Visual Studio Code', logoUrl: vscodeLogo, description: language === 'da' ? 'En populær kodeeditor.' : 'A popular code editor.' },
-    { name: 'Cursor', logoUrl: cursorLogo, description: language === 'da' ? 'En AI-integreret kodeeditor.' : 'An AI-integrated code editor.' },
-    { name: 'Postman', logoUrl: postmanLogo, description: language === 'da' ? 'Et værktøj til API-testning.' : 'A tool for API testing.' },
-    { name: 'Figma', logoUrl: figmaLogo, description: language === 'da' ? 'Et design værktøj til UI/UX.' : 'A design tool for UI/UX.' },
-    { name: 'Github', logoUrl: gitLogo, description: language === 'da' ? 'En version kontrol system.' : 'A version control system.' },
-    { name: 'Gitlab', logoUrl: gitlabLogo, description: language === 'da' ? 'En platform til version kontrol og samarbejde.' : 'A platform for version control and collaboration.' },
-    { name: 'Docker', logoUrl: dockerLogo, description: language === 'da' ? 'En containerisering platform.' : 'A containerization platform.' },
+    { 
+      name: 'Visual Studio Code', 
+      logoUrl: vscodeLogo 
+    },
+    { 
+      name: 'Cursor AI', 
+      logoUrl: cursorLogo 
+    },
+    { 
+      name: 'Postman', 
+      logoUrl: postmanLogo 
+    },
+    { 
+      name: 'Figma', 
+      logoUrl: figmaLogo 
+    },
+    { 
+      name: 'GitHub', 
+      logoUrl: gitLogo 
+    },
+    { 
+      name: 'GitLab', 
+      logoUrl: gitlabLogo 
+    },
+    { 
+      name: 'Docker', 
+      logoUrl: dockerLogo 
+    },
   ]
 
   return (
@@ -44,7 +65,6 @@ const Tools = () => {
               <div className="flex flex-col items-center space-y-3">
                 <img src={tool.logoUrl} alt={tool.name} className="h-12 sm:h-16 w-auto object-contain" />
                 <span className="text-sm sm:text-base text-gray-800 dark:text-gray-200 text-center">{tool.name}</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400 text-center">{tool.description}</span>
               </div>
             </div>
           </div>
