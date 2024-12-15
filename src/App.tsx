@@ -66,7 +66,7 @@ function App() {
       ) : (
         <div className={`opacity-100 transition-opacity duration-300`}>
           <div className="fixed top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] z-40"></div>
-          <div className="pt-[4px] relative overflow-y-auto h-screen">
+          <div className="pt-[4px] relative h-screen">
             <div className="flex">
               <main className="flex-1 transition-all duration-300">
                 <Home />

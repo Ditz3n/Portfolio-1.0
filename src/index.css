@@ -13,6 +13,13 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (max-width: 640px) {
+  .modal-image {
+    width: 100%; /* Gør billederne responsive */
+    height: auto; /* Bevarer billedforholdet */
+  }
+}
+
 @keyframes fade {
   0% {
     opacity: 0;
