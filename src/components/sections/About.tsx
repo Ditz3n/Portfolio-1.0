@@ -51,8 +51,8 @@ export default function About() {
           </div>
 
           <div className="relative max-w-[300px] sm:max-w-[350px] lg+:max-w-[400px] mx-auto aspect-square transition-all duration-300">
-            <div className="relative w-full h-full rounded-lg p-[3px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae]">
-              <div className="relative w-full h-full rounded-lg overflow-hidden group">
+            <div className="animated-gradient-border group">
+              <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <img 
                   src={profilePic} 
                   alt="Mads Villadsen" 

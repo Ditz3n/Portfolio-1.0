@@ -16,10 +16,16 @@ module.exports = {
         fade: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
-        }
+        },
+        gradientRotate: {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
       },
       animation: {
         fade: 'fade 0.3s ease-in-out',
+        'gradient-rotation': 'gradientRotate 10s linear infinite',
       },
       textShadow: {
         'gradient': '2px 2px 4px rgba(0,0,0,0.25)',

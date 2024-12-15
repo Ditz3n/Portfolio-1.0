@@ -13,24 +13,6 @@ html {
   scroll-behavior: smooth;
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-15px);
-  }
-  60% {
-    transform: translateY(-7px);
-  }
-}
-
-.bounce {
-  display: inline-block;
-  animation: bounce 1s infinite;
-  color: #e684ae;
-}
-
 @keyframes fade {
   0% {
     opacity: 0;
@@ -59,4 +41,26 @@ html {
   display: inline-block;
   animation: blink 1s infinite;
   color: #e684ae;
+}
+
+/* Animation for the gradient border rundt omkring profilbilledet på About.tsx side */
+.animated-gradient-border {
+  position: relative;
+  display: inline-block;
+  border-radius: 17px; /* Juster efter behov */
+  border: 5px solid transparent; /* Gennemsigtig kant */
+  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle), #77a1d3, #79cbca, #e684ae) border-box;
+  animation: rotate 8s linear infinite; /* Animation for rotation */
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
