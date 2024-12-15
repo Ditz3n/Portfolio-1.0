@@ -35,6 +35,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
   const { language } = useLanguage();
 
+  const getGradientColor = (index: number, total: number) => {
+    const startColor = { r: 119, g: 161, b: 211 }; // #77a1d3
+    const endColor = { r: 230, g: 132, b: 174 }; // #e684ae
+    const ratio = index / (total - 1);
+    return `rgb(${Math.round(startColor.r + (endColor.r - startColor.r) * ratio)}, ${Math.round(startColor.g + (endColor.g - startColor.g) * ratio)}, ${Math.round(startColor.b + (endColor.b - startColor.b) * ratio)})`;
+  };
+
   return (
     <div
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
@@ -71,16 +78,19 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           </div>
           {/* Dots Indicator */}
           <div className="flex justify-center mb-4">
-            {selectedProject.images.map((_, index) => (
-              <div
-                key={index}
-                className="w-3 h-3 rounded-full mx-1 cursor-pointer"
-                style={{
-                  backgroundColor: index === currentImageIndex ? 'rgb(119, 161, 211)' : 'rgb(200, 200, 200)',
-                }}
-                onClick={() => handleDotClick(index)}
-              />
-            ))}
+            {selectedProject.images.map((_, index) => {
+              const gradientColor = getGradientColor(index, selectedProject.images.length);
+              return (
+                <div
+                  key={index}
+                  className="w-3 h-3 rounded-full mx-1 cursor-pointer"
+                  style={{
+                    backgroundColor: index === currentImageIndex ? gradientColor : 'rgb(200, 200, 200)',
+                  }}
+                  onClick={() => handleDotClick(index)}
+                />
+              );
+            })}
           </div>
           <p className="dark:text-white text-gray-700 text-center">
             {language === 'da' ? selectedProject.description.da : selectedProject.description.en}

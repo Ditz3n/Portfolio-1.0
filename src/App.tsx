@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import LoadingScreen from './components/LoadingScreen';
-import SectionNavigation from './components/SectionNavigation'
-import Home from './components/sections/Home'
-import About from './components/sections/About'
-import Experience from './components/sections/Experience'
-import Projects from './components/sections/Projects'
-import { TailwindIndicator } from './components/TailwindIndicator'
+import SectionNavigation from './components/SectionNavigation';
+import Home from './components/sections/Home';
+import About from './components/sections/About';
+import Experience from './components/sections/Experience';
+import Projects from './components/sections/Projects';
+import { TailwindIndicator } from './components/TailwindIndicator';
 import ProjectModal from './components/sections/ProjectModal';
 
 interface Project {
@@ -68,7 +68,7 @@ function App() {
           <div className="fixed top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] z-40"></div>
           <div className="pt-[4px] relative h-screen">
             <div className="flex">
-              <main className="flex-1 transition-all duration-300">
+              <main className="flex-1 h-[calc(100vh-5rem)] md:h-auto overflow-y-auto">
                 <Home />
                 <About />
                 <Experience />
@@ -91,7 +91,7 @@ function App() {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export default App;
