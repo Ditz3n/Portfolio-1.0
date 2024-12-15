@@ -1,5 +1,5 @@
 import { useLanguage } from '../../context/LanguageContext'
-import ProgrammingLanguages from '../ProgrammingLanguages'
+import ProgrammingLanguages from './ProgrammingLanguages'
 import Education from './Education'
 import Tools from './Tools'
 
@@ -18,12 +18,7 @@ export default function Experience() {
           <Education />
           
           {/* Programming Languages Section */}
-          <div>
-            <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-gray-800 dark:text-white">
-              {language === 'da' ? 'Programmeringssprog' : 'Programming Languages'}
-            </h3>
-            <ProgrammingLanguages />
-          </div>
+          <ProgrammingLanguages />
 
           {/* Tools Section */}
           <Tools />
