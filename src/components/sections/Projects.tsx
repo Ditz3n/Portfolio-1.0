@@ -1,33 +1,40 @@
-import purchase4less from '../../assets/project/purchase4less.png'
+import purchase4less from '../../assets/project/purchase4less/purchase4less1.png'
+import purchase4less2 from '../../assets/project/purchase4less/purchase4less2.png'
+import purchase4less3 from '../../assets/project/purchase4less/purchase4less3.png'
+import russianRoulette1 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette1.png'
+import russianRoulette2 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette2.png'
+import russianRoulette3 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette3.png'
+import russianRoulette4 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette4.png'
+import russianRoulette5 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette5.png'
 
 interface Project {
   title: string;
-  imageUrl: string;
   description: { en: string; da: string };
+  images: string[];
 }
 
 interface ProjectsProps {
-  openModal: (project: Project) => void;
+  openModal: (project: Project, initialIndex: number) => void;
 }
 
 const projectsData: Project[] = [
   {
     title: 'Purchase4Less',
-    imageUrl: purchase4less,
     description: {
       en: 'Purchase4Less is an e-commerce platform that allows users to find the best deals on various products.',
       da: 'Purchase4Less er en e-handelsplatform, der giver brugerne mulighed for at finde de bedste tilbud på forskellige produkter.',
     },
-  },
-  /* {
-    title: 'Projekt 2',
-    imageUrl: '/path/to/image2.jpg',
-    description: {
-      en: 'Description for Projekt 2.',
-      da: 'Beskrivelse for Projekt 2.',
-    },
+    images: [purchase4less, purchase4less2, purchase4less3],
   },
   {
+    title: 'Elektronisk Russisk Roulette',
+    description: {
+      en: 'Electronic Russian Roulette is an online game with a physical board, where players bet on a number or color.',
+      da: 'Elektronisk Russisk Roulette er et online spil med en fysisk spilleplade, hvor spillere better på et tal eller farve.',
+    },
+    images: [russianRoulette1, russianRoulette2, russianRoulette3, russianRoulette4, russianRoulette5],
+  },
+  /* {
     title: 'Projekt 3',
     imageUrl: '/path/to/image3.jpg',
     description: {
@@ -49,9 +56,9 @@ const Projects = ({ openModal }: ProjectsProps) => {
         </p>
         <div className="grid grid-cols-2 gap-4 w-full max-w-[700px]">
           {projectsData.map((project, index) => (
-            <div key={index} className="relative group rounded-lg p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] hover:scale-105 transition-transform duration-200" onClick={() => openModal(project)}>
+            <div key={index} className="relative group rounded-lg p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] hover:scale-105 transition-transform duration-200" onClick={() => openModal(project, 0)}>
               <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 h-full transition-colors duration-200">
-                <img src={project.imageUrl} alt={project.title} className="h-32 w-full object-cover rounded-t-lg" />
+                <img src={project.images[0]} alt={project.title} className="h-32 w-full object-cover rounded-t-lg" />
                 <h3 className="text-xl font-semibold mt-2 text-gray-800 dark:text-gray-200 text-center">{project.title}</h3>
               </div>
             </div>
