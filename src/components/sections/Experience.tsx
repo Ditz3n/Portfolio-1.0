@@ -9,7 +9,7 @@ export default function Experience() {
   return (
     <section id="experience" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300 pt-16">
       <div className="text-left max-w-3xl transition-all duration-300">
-        <h2 className="text-5xl sm:text-6xl font-bold mb-12 text-gray-800 dark:text-white">
+        <h2 className="text-5xl md:text-6xl font-bold mb-12 text-gray-800 dark:text-white">
           {language === 'da' ? 'Erfaring' : 'Experience'}
         </h2>
 

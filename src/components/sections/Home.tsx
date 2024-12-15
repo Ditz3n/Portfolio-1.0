@@ -40,9 +40,9 @@ export default function Home() {
         <AnimatedText className="text-gray-800 dark:text-white font-bold text-3xl sm:text-4xl lg+:text-5xl mb-4 transition-all duration-300">
           {language === 'da' ? 'Velkommen! Jeg hedder' : 'Hey there! My name is'}
         </AnimatedText>
-        <h1 className="leading-tight font-bold mb-6">
+        <h1 className="leading-tight font-bold mb-6 transition-all duration-300">
           <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] text-transparent bg-clip-text">
-            <span className="text-7xl sm:text-8xl lg+:text-[10rem] block transition-all duration-300">
+            <span className="text-7xl md:text-8xl lg+:text-[10rem] block transition-all duration-300">
               {/* Dynamic rendering with manual break */}
               <span className="inline-block">
                 {displayedText.split(' ')[0]}

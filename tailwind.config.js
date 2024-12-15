@@ -31,8 +31,12 @@ module.exports = {
         'gradient': '2px 2px 4px rgba(0,0,0,0.25)',
       },
       screens: {
-        '2xl': '1536px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
         'lg+': '1200px',
+        'xl': '1280px',
+        '2xl': '1536px',
       }
     },
   },

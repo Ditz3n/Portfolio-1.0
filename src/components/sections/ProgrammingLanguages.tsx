@@ -61,7 +61,7 @@ const ProgrammingLanguages = () => {
         {language === 'da' ? 'Programmeringssprog' : 'Programming Languages'}
       </h3>
       
-      <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300">
+      <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300">
         {language === 'da' 
           ? 'Herunder kan du se de programmeringssprog og teknologier, som jeg har erfaring med gennem min uddannelse og personlige projekter.'
           : 'Below you can see the programming languages and technologies that I have experience with through my education and personal projects.'}
