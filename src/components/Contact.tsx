@@ -5,7 +5,7 @@ const Contact = () => {
   const { language } = useLanguage()
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300">
+    <section id="contact" className="min-h-[calc(100vh-230px)] xs:min-h-[calc(100vh)] sm:min-h-[calc(77vh)] md:min-h-[calc(100vh-130px)] lg+:min-h-[calc(100vh-300px)] xl:min-h-[calc(100vh-130px)] 2xl:min-h-[calc(100vh-230px)] flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300">
       <div className="text-left max-w-3xl transition-all duration-300">
         <h2 className="text-5xl md:text-6xl font-bold mb-12 text-gray-800 dark:text-white">
           {language === 'da' ? 'Kontakt' : 'Contact'}

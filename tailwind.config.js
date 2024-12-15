@@ -31,6 +31,7 @@ module.exports = {
         'gradient': '2px 2px 4px rgba(0,0,0,0.25)',
       },
       screens: {
+        'xs': '480px',
         'sm': '640px',
         'md': '768px',
         'lg': '1024px',

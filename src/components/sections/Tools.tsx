@@ -46,7 +46,7 @@ const Tools = () => {
   ]
 
   return (
-    <div>
+    <div className="mb-16">
       <h3 className="text-2xl md:text-3xl font-bold mb-8 text-gray-800 dark:text-white">
         {language === 'da' ? 'Værktøjer' : 'Tools'}
       </h3>
