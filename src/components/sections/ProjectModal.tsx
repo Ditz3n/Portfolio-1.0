@@ -37,7 +37,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     mediaQuery.addEventListener('change', handleThemeChange);
 
-    // Clean up the event listener on component unmount
     return () => {
       mediaQuery.removeEventListener('change', handleThemeChange);
     };
@@ -52,8 +51,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   const { language } = useLanguage();
 
   const getGradientColor = (index: number, total: number, isDarkMode: boolean) => {
-    const startColor = isDarkMode ? { r: 255, g: 78, b: 80 } : { r: 119, g: 161, b: 211 }; // #FF4E50 or #77a1d3
-    const endColor = isDarkMode ? { r: 249, g: 212, b: 35 } : { r: 230, g: 132, b: 174 }; // #F9D423 or #e684ae
+    const startColor = isDarkMode ? { r: 255, g: 78, b: 80 } : { r: 119, g: 161, b: 211 };
+    const endColor = isDarkMode ? { r: 249, g: 212, b: 35 } : { r: 230, g: 132, b: 174 };
     const ratio = index / (total - 1);
     return `rgb(${Math.round(startColor.r + (endColor.r - startColor.r) * ratio)}, ${Math.round(startColor.g + (endColor.g - startColor.g) * ratio)}, ${Math.round(startColor.b + (endColor.b - startColor.b) * ratio)})`;
   };

@@ -50,6 +50,7 @@ html {
   color: #e684ae;
 }
 
+/* Animateret gradient kant til billeder og modal */
 .animated-gradient-border {
   position: relative;
   display: inline-block;
@@ -82,4 +83,35 @@ html {
     background: linear-gradient(#131219, #131219) padding-box, 
                 linear-gradient(var(--angle), var(--light-color), var(--dark-color)) border-box;
   }
+}
+
+/* Scrollbar styling for light- & dark mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }

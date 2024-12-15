@@ -38,6 +38,14 @@ function App() {
     return () => clearInterval(interval);
   }, [isPaused, selectedProject]);
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isModalOpen]);
+
   const openModal = (project: Project, initialIndex: number) => {
     setSelectedProject(project);
     setCurrentImageIndex(initialIndex);
