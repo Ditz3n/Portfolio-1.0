@@ -69,7 +69,7 @@ const ProgrammingLanguages = () => {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full  max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px]">
         {languages.map((lang) => (
-          <div key={lang.name} className="relative group rounded-lg p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] hover:scale-105 transition-transform duration-200">
+          <div key={lang.name} className="relative group rounded-lg p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] hover:scale-105 transition-transform duration-200">
             <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 h-full transition-colors duration-200">
               <div className="flex flex-col items-center space-y-3">
                 <img src={lang.logoUrl} alt={lang.name} className="h-12 sm:h-16 w-auto object-contain" />

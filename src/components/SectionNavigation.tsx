@@ -26,10 +26,10 @@ export default function SectionNavigation() {
         onClick={() => handleScroll(sectionIds[i])}
         className={`text-sm tracking-widest uppercase transition-all duration-200 relative
           ${activeSection === sectionIds[i]
-            ? 'text-[#79cbca] dark:text-[#79cbca] md:translate-x-[-20px]' 
-            : 'text-gray-500 dark:text-gray-400 hover:text-[#79cbca] dark:hover:text-[#79cbca]'
+            ? 'text-[#FF4E50] dark:text-[#FF4E50] md:translate-x-[-20px]' 
+            : 'text-gray-500 dark:text-gray-400 hover:text-[#FF4E50] dark:hover:text-[#FF4E50]'
           }
-          ${activeSection === sectionIds[i] ? 'md:after:content-[""] md:after:absolute md:after:right-[-30px] md:after:top-1/2 md:after:-translate-y-1/2 md:after:w-[20px] md:after:h-[2px] md:after:bg-[#79cbca]' : ''}
+          ${activeSection === sectionIds[i] ? 'md:after:content-[""] md:after:absolute md:after:right-[-30px] md:after:top-1/2 md:after:-translate-y-1/2 md:after:w-[20px] md:after:h-[2px] md:after:bg-[#79cbca] dark:md:after:bg-[#FF4E50]' : ''}
         `}
       >
         {text}

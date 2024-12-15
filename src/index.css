@@ -50,14 +50,14 @@ html {
   color: #e684ae;
 }
 
-/* Animation for the gradient border rundt omkring profilbilledet på About.tsx side */
 .animated-gradient-border {
   position: relative;
   display: inline-block;
-  border-radius: 17px; /* Juster efter behov */
-  border: 5px solid transparent; /* Gennemsigtig kant */
-  background: linear-gradient(#131219, #131219) padding-box, linear-gradient(var(--angle), #77a1d3, #79cbca, #e684ae) border-box;
-  animation: rotate 8s linear infinite; /* Animation for rotation */
+  border-radius: 17px;
+  border: 5px solid transparent;
+  background: linear-gradient(#131219, #131219) padding-box, 
+              linear-gradient(var(--angle), #77a1d3, #79cbca, #e684ae) border-box;
+  animation: rotate 8s linear infinite;
 }
 
 @keyframes rotate {
@@ -70,4 +70,16 @@ html {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
+}
+
+:root {
+  --light-color: #F9D423;
+  --dark-color: #FF4E50;
+}
+
+@media (prefers-color-scheme: dark) {
+  .animated-gradient-border {
+    background: linear-gradient(#131219, #131219) padding-box, 
+                linear-gradient(var(--angle), var(--light-color), var(--dark-color)) border-box;
+  }
 }

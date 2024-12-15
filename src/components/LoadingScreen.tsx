@@ -9,7 +9,7 @@ const LoadingScreen = () => {
         size="50" // Animationens størrelse
         stroke="4" // Animationens tykkelse
         speed="1.2" // Animationens hastighed
-        color={document.body.classList.contains('dark') ? "white" : "#424242"} // Tjekker om systemet er i dark mode, og sætter farven til hvidt hvis det er.
+        color="gray"
       ></l-cardio>
     </div>
   );

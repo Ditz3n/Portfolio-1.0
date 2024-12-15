@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PauseIcon, PlayIcon } from '@heroicons/react/24/solid';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -27,6 +27,22 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   isPaused,
   togglePause,
 }) => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(document.documentElement.classList.contains('dark'));
+
+  useEffect(() => {
+    const handleThemeChange = (e: MediaQueryListEvent) => {
+      setIsDarkMode(e.matches);
+    };
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', handleThemeChange);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      mediaQuery.removeEventListener('change', handleThemeChange);
+    };
+  }, []);
+
   if (!isOpen || !selectedProject) return null;
 
   const handleDotClick = (index: number) => {
@@ -35,9 +51,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
   const { language } = useLanguage();
 
-  const getGradientColor = (index: number, total: number) => {
-    const startColor = { r: 119, g: 161, b: 211 }; // #77a1d3
-    const endColor = { r: 230, g: 132, b: 174 }; // #e684ae
+  const getGradientColor = (index: number, total: number, isDarkMode: boolean) => {
+    const startColor = isDarkMode ? { r: 255, g: 78, b: 80 } : { r: 119, g: 161, b: 211 }; // #FF4E50 or #77a1d3
+    const endColor = isDarkMode ? { r: 249, g: 212, b: 35 } : { r: 230, g: 132, b: 174 }; // #F9D423 or #e684ae
     const ratio = index / (total - 1);
     return `rgb(${Math.round(startColor.r + (endColor.r - startColor.r) * ratio)}, ${Math.round(startColor.g + (endColor.g - startColor.g) * ratio)}, ${Math.round(startColor.b + (endColor.b - startColor.b) * ratio)})`;
   };
@@ -47,7 +63,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
       onClick={onClose}
     >
-      <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] rounded-lg p-[2px] mx-4 sm:mx-0">
+      <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg p-[2px] mx-4 sm:mx-0">
         <div
           className="dark:bg-[#1a1a1a] bg-white rounded-lg p-6 max-w-md w-full"
           onClick={(e) => e.stopPropagation()}
@@ -79,7 +95,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           {/* Dots Indicator */}
           <div className="flex justify-center mb-4">
             {selectedProject.images.map((_, index) => {
-              const gradientColor = getGradientColor(index, selectedProject.images.length);
+              const gradientColor = getGradientColor(index, selectedProject.images.length, isDarkMode);
               return (
                 <div
                   key={index}

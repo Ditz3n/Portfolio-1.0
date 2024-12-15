@@ -99,7 +99,7 @@ const Education = () => {
             const semesterNum = Number(semester)
             const isOpen = openSemesters.includes(semesterNum) // Check if the semester is open
             return (
-              <div key={semester} className="relative rounded-lg overflow-hidden p-[1px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae]">
+              <div key={semester} className="relative rounded-lg overflow-hidden p-[1px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
                 <div className="bg-white dark:bg-[#1a1a1a] rounded-lg overflow-hidden">
                   <button
                     onClick={() => toggleSemester(semesterNum)} // Toggle semester on click
@@ -170,7 +170,7 @@ const Education = () => {
             </div>
             <div className="h-4 w-full bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden p-[1px]">
               <div 
-                className="h-full rounded-full bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] transition-all duration-300"
+                className="h-full rounded-full bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] transition-all duration-300"
                 style={{ width: `${progressPercentage}%` }}
               />
             </div>

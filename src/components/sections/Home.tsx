@@ -41,7 +41,7 @@ export default function Home() {
           {language === 'da' ? 'Velkommen! Jeg hedder' : 'Hey there! My name is'}
         </AnimatedText>
         <h1 className="leading-tight font-bold mb-6 transition-all duration-300">
-          <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] text-transparent bg-clip-text">
+          <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] text-transparent bg-clip-text">
             <span className="text-7xl md:text-8xl lg+:text-[10rem] block transition-all duration-300">
               {/* Dynamic rendering with manual break */}
               <span className="inline-block">
@@ -55,7 +55,7 @@ export default function Home() {
                     className={`inline-block transition-opacity duration-150 ${
                       dotPosition === 0 ? 'opacity-0' : 'opacity-100'
                     }`}
-                    style={{ color: '#e684ae' }}
+                    style={{ color: '#F9D423 dark:color-[#FF4E50]' }}
                   >
                     .
                   </span>
