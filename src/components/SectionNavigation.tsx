@@ -6,11 +6,11 @@ export default function SectionNavigation() {
   const activeSection = useActiveSection()
 
   const navItems = {
-    da: ['OM MIG', 'ERFARING', 'PROJEKTER'],
-    en: ['ABOUT', 'EXPERIENCE', 'PROJECTS']
+    da: ['OM MIG', 'ERFARING', 'PROJEKTER', 'KONTAKT'],
+    en: ['ABOUT', 'EXPERIENCE', 'PROJECTS', 'CONTACT']
   }
 
-  const sectionIds = ['about', 'experience', 'projects']
+  const sectionIds = ['about', 'experience', 'projects', 'contact']
 
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
@@ -48,7 +48,7 @@ export default function SectionNavigation() {
 
       {/* Mobile Navigation */}
       <nav className="visible md:invisible fixed bottom-0 left-0 right-0 bg-white dark:bg-[#1a1a1a] z-50 py-6 opacity-100 md:opacity-0 transition-all duration-300 md:pointer-events-none">
-        <div className="grid grid-cols-3 place-items-center max-w-md mx-auto px-8">
+        <div className="grid grid-cols-4 place-items-center max-w-md mx-auto px-8">
           {renderNavLinks(navItems[language])}
         </div>
       </nav>
