@@ -50,7 +50,7 @@ export default function About() {
             )}
           </div>
 
-          <div className="relative max-w-[300px] sm:max-w-[350px] lg+:max-w-[400px] mx-auto aspect-square transition-all duration-300">
+          <div className="relative max-w-[300px] sm:max-w-[350px] lg+:max-w-[400px] mx-auto aspect-square transition-all duration-300 z-0">
             <div className="shadow-lg animated-gradient-border group">
               <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <img 

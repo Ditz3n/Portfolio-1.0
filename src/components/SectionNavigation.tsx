@@ -40,7 +40,7 @@ export default function SectionNavigation() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="invisible md:visible fixed right-20 top-1/2 -translate-y-1/2 opacity-0 md:opacity-100 transition-all duration-300">
+      <nav className="invisible md:visible fixed right-20 top-1/2 -translate-y-1/2 opacity-0 md:opacity-100 transition-all duration-300 z-10">
         <div className="flex flex-col items-end gap-8">
           {renderNavLinks(navItems[language])}
         </div>
