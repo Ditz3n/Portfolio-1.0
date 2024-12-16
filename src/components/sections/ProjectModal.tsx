@@ -80,12 +80,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           {/* Centered Image Section */}
           <div className="flex items-center justify-center mb-4">
             <div className="animated-gradient-border">
-              <div className="relative w-full h-64 rounded-xl overflow-hidden">
+              <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden">
                 <img
                   src={selectedProject.images[currentImageIndex]}
                   alt={selectedProject.title}
-                  className="w-full h-full object-cover transition-all duration-300 min-h-[256px]"
+                  className="w-full h-full object-cover transition-all duration-300"
                   onClick={handleImageClick}
+                  loading="eager" // Force immediate loading
+                  style={{ aspectRatio: '4/3' }} // Explicit aspect ratio
                 />
                 {/* Pause/Play Icon */}
                 <div className="absolute top-2 right-2 z-10">

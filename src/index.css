@@ -91,6 +91,25 @@ html {
   }
 }
 
+.animate-gradient {
+  background-size: 300%;
+  -webkit-animation: animatedgradient 6s ease infinite alternate;
+  -moz-animation: animatedgradient 6s ease infinite alternate;
+  animation: animatedgradient 6s ease infinite alternate;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Scrollbar styling for light- & dark mode */
 ::-webkit-scrollbar {
   width: 8px;
@@ -120,4 +139,20 @@ html {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #333;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -1px; /* Juster for at dække grænsen */
+  left: 10px; /* Juster for at dække grænsen */
+  right: -1px; /* Juster for at dække grænsen */
+  bottom: -1px; /* Juster for at dække grænsen */
+  background: linear-gradient(to right, #77a1d3, #79cbca, #e684ae); /* Gradient farver */
+  z-index: -1; /* Sørg for, at det er bagved indholdet */
+  border-radius: inherit; /* Behold den samme runding som den overordnede div */
 }
