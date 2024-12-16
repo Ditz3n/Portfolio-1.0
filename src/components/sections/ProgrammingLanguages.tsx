@@ -10,6 +10,7 @@ import csharpLogo from '../../assets/logos/c_sharp_logo.png';
 import cppLogo from '../../assets/logos/cpp_logo.png';
 import pythonLogo from '../../assets/logos/python_logo.png';
 import mongodbLogo from '../../assets/logos/mongodb_logo.png';
+import sqlLogo from '../../assets/logos/sql_logo.png';
 
 // Funktion til at tjekke hvilket sprog brugerens system bruger
 const ProgrammingLanguages = () => {
@@ -53,6 +54,10 @@ const ProgrammingLanguages = () => {
       name: 'MongoDB',
       logoUrl: mongodbLogo,
     },
+    { 
+      name: 'SQL',
+      logoUrl: sqlLogo,
+    },
   ];
 
   return (
@@ -67,10 +72,10 @@ const ProgrammingLanguages = () => {
           : 'Below you can see the programming languages and technologies that I have experience with through my education and personal projects.'}
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full  max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px]">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px]">
         {languages.map((lang) => (
-          <div key={lang.name} className="relative group rounded-lg p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] hover:scale-105 transition-transform duration-200">
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 h-full transition-colors duration-200">
+          <div key={lang.name} className="relative shadow group rounded-lg p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] hover:scale-105 transition-transform duration-200">
+            <div className="bg-gray-50 dark:bg-[#222222] rounded-lg p-4 h-full transition-colors duration-200">
               <div className="flex flex-col items-center space-y-3">
                 <img src={lang.logoUrl} alt={lang.name} className="h-12 sm:h-16 w-auto object-contain" />
                 <span className="text-sm sm:text-base text-gray-800 dark:text-gray-200 text-center">{lang.name}</span>

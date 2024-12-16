@@ -7,7 +7,8 @@ import Experience from './components/sections/Experience';
 import Projects from './components/sections/Projects';
 import { TailwindIndicator } from './components/TailwindIndicator';
 import ProjectModal from './components/sections/ProjectModal';
-import Contact from './components/Contact';
+import Contact from './components/sections/Contact';
+import Footer from './components/sections/Footer';
 
 interface Project {
   title: string;
@@ -83,6 +84,7 @@ function App() {
                 <Experience />
                 <Projects openModal={openModal} />
                 <Contact />
+                <Footer />
               </main>
               <SectionNavigation />
               <TailwindIndicator />

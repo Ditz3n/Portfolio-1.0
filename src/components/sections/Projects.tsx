@@ -6,6 +6,12 @@ import russianRoulette2 from '../../assets/project/electronic_russian_roulette/e
 import russianRoulette3 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette3.png'
 import russianRoulette4 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette4.png'
 import russianRoulette5 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette5.png'
+import russianRoulette6 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette6.png'
+import portfolio from '../../assets/project/portfolio/portfolio1.png'
+import portfolio2 from '../../assets/project/portfolio/portfolio2.png'
+import portfolio3 from '../../assets/project/portfolio/portfolio3.png'
+import portfolio4 from '../../assets/project/portfolio/portfolio4.png'
+import portfolio5 from '../../assets/project/portfolio/portfolio5.png'
 
 interface Project {
   title: string;
@@ -21,43 +27,43 @@ const projectsData: Project[] = [
   {
     title: 'Purchase4Less',
     description: {
-      en: 'Purchase4Less is an e-commerce platform that allows users to find the best deals on various products.',
-      da: 'Purchase4Less er en e-handelsplatform, der giver brugerne mulighed for at finde de bedste tilbud på forskellige produkter.',
+      en: 'Purchase4Less is an e-commerce platform that allows users to find the best deals.',
+      da: 'Purchase4Less er en e-handelsplatform, der giver brugerne mulighed for at finde de bedste tilbud.',
     },
     images: [purchase4less, purchase4less2, purchase4less3],
   },
   {
-    title: 'Elektronisk Russisk Roulette',
+    title: 'Elektronisk Roulette',
     description: {
-      en: 'Electronic Russian Roulette is an online game with a physical board, where players bet on a number or color.',
-      da: 'Elektronisk Russisk Roulette er et online spil med en fysisk spilleplade, hvor spillere better på et tal eller farve.',
+      en: 'Electronic Roulette is an online game with a physical board, where players bet on a number or color.',
+      da: 'Elektronisk Roulette er et online spil med en fysisk spilleplade, hvor spillere better på et tal eller farve.',
     },
-    images: [russianRoulette1, russianRoulette2, russianRoulette3, russianRoulette4, russianRoulette5],
+    images: [russianRoulette1, russianRoulette2, russianRoulette3, russianRoulette4, russianRoulette5, russianRoulette6],
   },
-  /* {
-    title: 'Projekt 3',
-    imageUrl: '/path/to/image3.jpg',
+  {
+    title: 'Portfolio 1.0',
     description: {
-      en: 'Description for Projekt 3.',
-      da: 'Beskrivelse for Projekt 3.',
+      en: 'Portfolio 1.0 is a website that showcases my projects and skills in a single page.',
+      da: 'Portfolio 1.0 er en hjemmeside, der viser mine projekter og færdigheder samlet på en side.',
     },
-  }, */
+    images: [portfolio, portfolio2, portfolio3, portfolio4, portfolio5],
+  }, 
 ];
 
 const Projects = ({ openModal }: ProjectsProps) => {
   return (
-    <section id="projects" className="flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300 min-h-[calc(100vh-230px)] xs:min-h-[calc(100vh)] sm:min-h-[calc(77vh)] md:min-h-[calc(100vh-130px)] lg+:min-h-[calc(100vh-300px)] xl:min-h-[calc(100vh-130px)] 2xl:min-h-[calc(100vh-230px)] pt-8">
+    <section id="projects" className="flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300 pt-8 pb-16">
       <div className="text-left max-w-3xl transition-all duration-300">
         <h2 className="text-5xl md:text-6xl font-bold mb-12 text-gray-800 dark:text-white">
           Projekter
         </h2>
-        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg:max-w-[700px] transition-all duration-300">
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300">
           Her kan du finde information om mine projekter, som jeg har arbejdet på gennem min uddannelse og personlige projekter.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 w-full max-w-[450px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 w-full max-w-[450px] lg+:max-w-[700px]">
           {projectsData.map((project, index) => (
             <div key={index} className="relative group rounded-lg p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] hover:scale-105 transition-transform duration-200" onClick={() => openModal(project, 0)}>
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-2 h-full transition-colors duration-200">
+              <div className="bg-gray-50 dark:bg-[#222222] rounded-lg p-2 h-full transition-colors duration-200">
                 <img src={project.images[0]} alt={project.title} className="h-24 w-full object-cover rounded-t-lg" />
                 <h3 className="text-lg font-semibold mt-2 text-gray-800 dark:text-gray-200 text-center">{project.title}</h3>
               </div>
@@ -68,12 +74,5 @@ const Projects = ({ openModal }: ProjectsProps) => {
     </section>
   );
 };
-
-
-
-
-
-
-
 
 export default Projects; 

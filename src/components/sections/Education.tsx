@@ -99,11 +99,11 @@ const Education = () => {
             const semesterNum = Number(semester)
             const isOpen = openSemesters.includes(semesterNum) // Check if the semester is open
             return (
-              <div key={semester} className="relative rounded-lg overflow-hidden p-[1px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
+              <div key={semester} className="relative rounded-lg shadow overflow-hidden p-[1px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
                 <div className="bg-white dark:bg-[#1a1a1a] rounded-lg overflow-hidden">
                   <button
                     onClick={() => toggleSemester(semesterNum)} // Toggle semester on click
-                    className="w-full px-4 py-4 flex items-center justify-between text-left bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800/80 transition-colors duration-200"
+                    className="w-full px-4 py-4 flex items-center justify-between text-left bg-gray-50 dark:bg-[#222222] hover:bg-gray-100 dark:hover:bg-[#222222]/80 transition-colors duration-200"
                   >
                     <div className="flex items-center space-x-4">
                       <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
@@ -137,7 +137,7 @@ const Education = () => {
                             <tr 
                               key={course.id}
                               className={`border-b border-gray-200 dark:border-gray-700 transition-all duration-300
-                                ${course.completed ? 'bg-green-50 dark:bg-green-900/10' : ''}`}
+                                ${course.completed ? 'bg-green-100 dark:bg-green-900/20' : ''}`}
                             >
                               <td className="py-2 sm:py-4 px-2 sm:px-4 text-[10px] sm:text-sm text-gray-800 dark:text-gray-200">{course.id}</td>
                               <td className="py-2 sm:py-4 px-2 sm:px-4 text-[10px] sm:text-sm text-gray-800 dark:text-gray-200 break-words">{course.name}</td>
@@ -168,7 +168,7 @@ const Education = () => {
                 {completedECTS} / {totalECTS} ECTS ({Math.round(progressPercentage)}%)
               </span>
             </div>
-            <div className="h-4 w-full bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden p-[1px]">
+            <div className="h-4 w-full bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
               <div 
                 className="h-full rounded-full bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] transition-all duration-300"
                 style={{ width: `${progressPercentage}%` }}

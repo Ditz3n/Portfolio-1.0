@@ -46,6 +46,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
   const handleDotClick = (index: number) => {
     setCurrentImageIndex(index);
+    if (!isPaused) {
+        togglePause();
+    }
+  };
+
+  const handleImageClick = () => {
+    togglePause();
   };
 
   const { language } = useLanguage();
@@ -77,8 +84,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 <img
                   src={selectedProject.images[currentImageIndex]}
                   alt={selectedProject.title}
-                  className="w-full h-full object-cover transition-all duration-300"
-                  onClick={togglePause}
+                  className="w-full h-full object-cover transition-all duration-300 min-h-[256px]"
+                  onClick={handleImageClick}
                 />
                 {/* Pause/Play Icon */}
                 <div className="absolute top-2 right-2 z-10">
@@ -111,7 +118,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
             {language === 'da' ? selectedProject.description.da : selectedProject.description.en}
           </p>
           <button
-            className="mt-4 px-4 py-2 rounded dark:bg-gray-300 dark:text-gray-700 bg-gray-300 dark:hover:bg-gray-400 dark:hover:text-gray-800 text-gray-700 hover:bg-gray-400 hover:text-gray-800 transition-colors duration-300 mx-auto block"
+            className="mt-4 px-4 py-2 rounded dark:bg-gray-300 dark:text-gray-700 bg-gray-300 text-gray-700 mx-auto block hover:scale-105 transition-transform duration-300"
             onClick={onClose}
           >
             {language === 'da' ? 'Luk' : 'Close'}

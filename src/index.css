@@ -20,6 +20,11 @@ html {
   }
 }
 
+.animate-hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
 @keyframes fade {
   0% {
     opacity: 0;
@@ -59,6 +64,7 @@ html {
   background: linear-gradient(#131219, #131219) padding-box, 
               linear-gradient(var(--angle), #77a1d3, #79cbca, #e684ae) border-box;
   animation: rotate 8s linear infinite;
+  z-index: 100;
 }
 
 @keyframes rotate {
