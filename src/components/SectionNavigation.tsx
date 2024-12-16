@@ -15,7 +15,13 @@ export default function SectionNavigation() {
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      // Adjusted to account for mobile navigation height
+      const offset = window.innerWidth < 768 ? 80 : 0;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      });
     }
   }
 
@@ -47,7 +53,7 @@ export default function SectionNavigation() {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="visible md:invisible fixed bottom-0 left-0 right-0 bg-white dark:bg-[#1a1a1a] z-50 py-7 opacity-100 md:opacity-0 transition-all duration-300 md:pointer-events-none">
+      <nav className="visible md:invisible fixed bottom-0 left-0 right-0 bg-white dark:bg-[#1a1a1a] z-50 py-7 opacity-100 md:opacity-0 transition-all duration-300 md:pointer-events-none shadow-[0_-2px_10px_rgba(0,0,0,0.1)]">
         <div className="grid grid-cols-4 place-items-center max-w-md mx-auto px-8">
           {renderNavLinks(navItems[language])}
         </div>
