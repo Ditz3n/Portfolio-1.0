@@ -5,11 +5,14 @@ const Contact = () => {
   const { language } = useLanguage()
 
   return (
-    <section id="contact" className="min-h-[calc(100vh-230px)] xs:min-h-[calc(100vh)] sm:min-h-[calc(77vh)] md:min-h-[calc(100vh-130px)] lg+:min-h-[calc(100vh-300px)] xl:min-h-[calc(100vh-130px)] 2xl:min-h-[calc(100vh-230px)] flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300">
+    <section id="contact" className="xs:mb-[220px] sm:mb-[231px] md:mb-[330px] lg:mb-[300px] xl:mb-[300px] 2xl:mb-[400px] min-h-[calc(100vh-230px)] xs:min-h-[calc(100vh-300px)] sm:min-h-[calc(100vh-320px)] md:min-h-[calc(100vh-360px)] lg:min-h-[calc(100vh-300px)] xl:min-h-[calc(100vh-300px)] 2xl:min-h-[calc(100vh-400px)] flex items-center justify-center px-8 sm:justify-start sm:px-16 md:px-24 lg:px-32 transition-all duration-300">
       <div className="text-left max-w-3xl transition-all duration-300">
         <h2 className="text-5xl md:text-6xl font-bold mb-12 text-gray-800 dark:text-white">
           {language === 'da' ? 'Kontakt' : 'Contact'}
         </h2>
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg:max-w-[700px] transition-all duration-300">
+          {language === 'da' ? 'Du kan kontakte mig på følgende platforme:' : 'You can contact me on the following platforms:'}
+        </p>
         <div className="flex space-x-4">
           {/* LinkedIn */}
           <TERipple rippleColor="light">
