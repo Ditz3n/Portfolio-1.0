@@ -44,7 +44,7 @@ function App() {
     if (isModalOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'auto';
     }
   }, [isModalOpen]);
 
