@@ -79,7 +79,7 @@ function App() {
           <div className="fixed top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] z-40 animate-gradient"></div>
           <div className="pt-[4px]">
             <div className="flex">
-              <main className="flex-1 overflow-y-auto md:pb-0 pb-32">
+              <main className="flex-1 overflow-y-auto md:pb-0 pb-24">
                 <Home />
                 <About />
                 <Experience />

@@ -37,7 +37,7 @@ const Contact = () => {
           <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[2px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[1.5px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2.5px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
-              onClick={() => window.open("https://www.linkedin.com/in/mads-villadsen-880792288/", "_blank")}
+              onClick={() => window.open("https://www.facebook.com/Ditz3n/?locale=da_DK", "_blank")}
               className="flex items-center justify-center w-full h-full bg-gray-50 dark:bg-[#222222] text-gray-800 dark:text-white rounded-[5px] px-4 py-2 text-xs font-medium uppercase leading-normal shadow-md focus:outline-none focus:ring-0 box-border transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-[#272727]"
             >
             <div className="flex items-center justify-center md:flex-row md:space-x-2">
@@ -53,7 +53,7 @@ const Contact = () => {
           <div className="p-[2px] xs:pl-[2px] xs:pr-[1.5px] xs:pb-[1.5px] xs:pt-[2px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[1.5px] sm:pr-[1.5px] md:pt-[2px] md:pb-[2px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2.5px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
-              onClick={() => window.open("https://www.linkedin.com/in/mads-villadsen-880792288/", "_blank")}
+              onClick={() => window.open("https://github.com/Ditz3n", "_blank")}
               className="flex items-center justify-center w-full h-full bg-gray-50 dark:bg-[#222222] text-gray-800 dark:text-white rounded-[5px] px-4 py-2 text-xs font-medium uppercase leading-normal shadow-md focus:outline-none focus:ring-0 box-border transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-[#272727]"
             >
             <div className="flex items-center justify-center md:flex-row md:space-x-2">
@@ -69,7 +69,7 @@ const Contact = () => {
           <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
-              onClick={() => window.open("https://www.linkedin.com/in/mads-villadsen-880792288/", "_blank")}
+              onClick={() => window.open("https://discordlookup.com/user/225262706486149120", "_blank")}
               className="flex items-center justify-center w-full h-full bg-gray-50 dark:bg-[#222222] text-gray-800 dark:text-white rounded-[5px] px-4 py-2 text-xs font-medium uppercase leading-normal shadow-md focus:outline-none focus:ring-0 box-border transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-[#272727]"
             >
             <div className="flex items-center justify-center md:flex-row md:space-x-2">
@@ -90,21 +90,21 @@ const Contact = () => {
           <div className="p-[2px] xs:pt-[2px] xs:pl-[2px] xs:pb-[1.5px] xs:pr-[2px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[1.5px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2.5px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
-              onClick={() => window.open("https://www.linkedin.com/in/mads-villadsen-880792288/", "_blank")}
+              onClick={() => window.location.href = "mailto:mvmads@gmail.com"}
               className="flex items-center justify-center w-full h-full bg-gray-50 dark:bg-[#222222] text-gray-800 dark:text-white rounded-[5px] px-4 py-2 text-xs font-medium uppercase leading-normal shadow-md focus:outline-none focus:ring-0 box-border transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-[#272727]"
             >
-            <div className="flex items-center justify-center md:flex-row md:space-x-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M7 11v2.4h3.97c-.16 1.029-1.2 3.02-3.97 3.02-2.39 0-4.34-1.979-4.34-4.42 0-2.44 1.95-4.42 4.34-4.42 1.36 0 2.27.58 2.79 1.08l1.9-1.83c-1.22-1.14-2.8-1.83-4.69-1.83-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.721-2.84 6.721-6.84 0-.46-.051-.81-.111-1.16h-6.61zm0 0 17 2h-3v3h-2v-3h-3v-2h3v-3h2v3h3v2z" />
-              </svg>
-              <span className="hidden md:block">Email</span>
-            </div>
-          </button>
+              <div className="flex items-center justify-center md:flex-row md:space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+                </svg>
+                <span className="hidden md:block">Email</span>
+              </div>
+            </button>
           </div>
         </div>
       </div>

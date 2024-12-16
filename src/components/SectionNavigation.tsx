@@ -1,5 +1,6 @@
 import { useLanguage } from '../context/LanguageContext'
 import { useActiveSection } from '../hooks/useActiveSection'
+import { HomeIcon, BriefcaseIcon, Squares2X2Icon, EnvelopeIcon } from '@heroicons/react/24/outline'
 
 export default function SectionNavigation() {
   const { language } = useLanguage()
@@ -11,17 +12,17 @@ export default function SectionNavigation() {
   }
 
   const sectionIds = ['about', 'experience', 'projects', 'contact']
+  const icons = [<HomeIcon className="h-6 w-6" />, <BriefcaseIcon className="h-6 w-6" />, <Squares2X2Icon className="h-6 w-6" />, <EnvelopeIcon className="h-6 w-6" />]
 
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      // Adjusted to account for mobile navigation height
-      const offset = window.innerWidth < 768 ? 80 : 0;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offset = window.innerWidth < 768 ? 80 : 0
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       window.scrollTo({
         top: elementPosition - offset,
         behavior: 'smooth'
-      });
+      })
     }
   }
 
@@ -30,7 +31,7 @@ export default function SectionNavigation() {
       <a
         key={i}
         onClick={() => handleScroll(sectionIds[i])}
-        className={`text-sm tracking-widest uppercase transition-all duration-200 relative
+        className={`text-xs sm:text-sm md:text-base tracking-widest uppercase transition-all duration-200 relative
           ${activeSection === sectionIds[i]
             ? 'text-[#77a1d3] dark:text-[#FF4E50] md:translate-x-[-20px]' 
             : 'text-gray-500 dark:text-gray-400 hover:text-[#77a1d3] dark:hover:text-[#FF4E50]'
@@ -38,7 +39,8 @@ export default function SectionNavigation() {
           ${activeSection === sectionIds[i] ? 'md:after:content-[""] md:after:absolute md:after:right-[-30px] md:after:top-1/2 md:after:-translate-y-1/2 md:after:w-[20px] md:after:h-[2px] md:after:bg-[#79cbca] dark:md:after:bg-[#FF4E50]' : ''}
         `}
       >
-        {text}
+        <span className="hidden md:inline opacity-0 md:opacity-100 transition-opacity duration-300">{text}</span>
+        <span className="md:hidden opacity-100 md:opacity-0 transition-opacity duration-300">{icons[i]}</span>
       </a>
     ))
   )
@@ -53,11 +55,11 @@ export default function SectionNavigation() {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="visible md:invisible fixed bottom-0 left-0 right-0 bg-white dark:bg-[#1a1a1a] z-40 py-7 opacity-100 md:opacity-0 transition-all duration-300 md:pointer-events-none shadow-[0_-2px_10px_rgba(0,0,0,0.1)]">
-        <div className="grid grid-cols-4 place-items-center max-w-md mx-auto px-8">
+      <nav className="visible md:invisible fixed bottom-0 left-0 right-0 bg-white dark:bg-[#1a1a1a] z-40 py-3 opacity-100 md:opacity-0 transition-all duration-300 md:pointer-events-none shadow-[0_-2px_10px_rgba(0,0,0,0.1)]">
+        <div className="grid grid-cols-4 place-items-center max-w-md mx-auto px-4">
           {renderNavLinks(navItems[language])}
         </div>
       </nav>
     </>
   )
-} 
+}

@@ -51,9 +51,9 @@ const ProjectImage = React.memo(({ src, alt, onClick, isPaused }: {
       />
       <div className="absolute top-2 right-2 z-10">
         {isPaused ? (
-          <PlayIcon className="w-6 h-6 text-white" />
+          <PlayIcon className="w-6 h-6 text-[#222222]" />
         ) : (
-          <PauseIcon className="w-6 h-6 text-white" />
+          <PauseIcon className="w-6 h-6 text-[#222222]" />
         )}
       </div>
     </div>

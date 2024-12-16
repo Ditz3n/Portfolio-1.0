@@ -99,7 +99,7 @@ const Education = () => {
             const semesterNum = Number(semester)
             const isOpen = openSemesters.includes(semesterNum) // Check if the semester is open
             return (
-              <div key={semester} className="relative rounded-lg shadow overflow-hidden p-[1px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
+              <div key={semester} className="relative rounded-lg shadow overflow-hidden p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
                 <div className="bg-white dark:bg-[#1a1a1a] rounded-lg overflow-hidden">
                   <button
                     onClick={() => toggleSemester(semesterNum)} // Toggle semester on click
