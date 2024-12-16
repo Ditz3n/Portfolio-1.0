@@ -57,6 +57,7 @@ function App() {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
+    document.body.style.overflow = 'auto';
   };
 
   const handleNextImage = () => {
@@ -85,21 +86,21 @@ function App() {
                 <Projects openModal={openModal} />
                 <Contact />
                 <Footer />
+                
+                <ProjectModal
+                  isOpen={isModalOpen}
+                  onClose={closeModal}
+                  selectedProject={selectedProject}
+                  currentImageIndex={currentImageIndex}
+                  setCurrentImageIndex={setCurrentImageIndex}
+                  isPaused={isPaused}
+                  togglePause={togglePause}
+                />
               </main>
               <SectionNavigation />
               <TailwindIndicator />
             </div>
           </div>
-
-          <ProjectModal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            selectedProject={selectedProject}
-            currentImageIndex={currentImageIndex}
-            setCurrentImageIndex={setCurrentImageIndex}
-            isPaused={isPaused}
-            togglePause={togglePause}
-          />
         </div>
       )}
     </div>
