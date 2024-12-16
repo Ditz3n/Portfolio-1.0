@@ -71,15 +71,15 @@ function App() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-white dark:bg-[#1a1a1a] transition-colors duration-300 overflow-x-hidden fixed-container">
+    <div className="w-full min-h-screen bg-white dark:bg-[#1a1a1a] transition-colors duration-300 overflow-x-hidden">
       {loading ? (
         <LoadingScreen />
       ) : (
         <div className={`opacity-100 transition-opacity duration-300`}>
           <div className="fixed top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] z-40"></div>
-          <div className="pt-[4px] relative h-screen">
+          <div className="pt-[4px]">
             <div className="flex">
-              <main className="flex-1 h-[calc(100vh-5rem)] md:h-auto overflow-y-auto">
+              <main className="flex-1 overflow-y-auto">
                 <Home />
                 <About />
                 <Experience />

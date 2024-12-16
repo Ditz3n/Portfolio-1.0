@@ -66,10 +66,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 overflow-y-auto"
       onClick={onClose}
     >
-      <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg p-[2px] mx-4 sm:mx-0">
+      <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg p-[2px] mx-4 sm:mx-0 my-8">
         <div
           className="dark:bg-[#1a1a1a] bg-white rounded-lg p-6 max-w-md w-full"
           onClick={(e) => e.stopPropagation()}
