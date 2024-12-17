@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { PauseIcon, PlayIcon } from '@heroicons/react/24/solid';
 import { useLanguage } from '../../context/LanguageContext';
+import { languageLogos, toolsLogos } from '../Languages';
 
 interface Project {
-  title: string;
+  title: { en: string; da: string };
   description: { en: string; da: string };
+  video?: string;
   images: string[];
+  languages: string[];
 }
 
 interface ProjectModalProps {
@@ -25,40 +28,51 @@ const getGradientColor = (index: number, total: number, isDarkMode: boolean): st
   return `rgb(${Math.round(startColor.r + (endColor.r - startColor.r) * ratio)}, ${Math.round(startColor.g + (endColor.g - startColor.g) * ratio)}, ${Math.round(startColor.b + (endColor.b - startColor.b) * ratio)})`;
 };
 
-const ProjectImage = React.memo(({ src, alt, onClick, isPaused }: { 
-  src: string; 
-  alt: string; 
-  onClick: () => void; 
-  isPaused: boolean; 
-}) => {
-  const [isLoading, setIsLoading] = useState(true);
+const ProjectImage = ({ src, alt, onClick }: { src: string; alt: string; onClick: () => void; }) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const [isFading, setIsFading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(document.documentElement.classList.contains('dark'));
+
+  useEffect(() => {
+    if (currentSrc !== src) {
+      setIsFading(true);
+      const fadeTimer = setTimeout(() => {
+        setCurrentSrc(src);
+        setIsFading(false);
+      }, 300);
+
+      return () => clearTimeout(fadeTimer);
+    }
+  }, [src]);
+
+  useEffect(() => {
+    const handleThemeChange = (e: MediaQueryListEvent) => {
+      setIsDarkMode(e.matches);
+    };
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', handleThemeChange);
+
+    return () => mediaQuery.removeEventListener('change', handleThemeChange);
+  }, []);
 
   return (
     <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden">
-      {isLoading && (
-        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800 animate-pulse" />
-      )}
+      <div
+        className={`absolute inset-0 transition-opacity duration-300 ${isFading ? 'opacity-100' : 'opacity-0'}`}
+        style={{ backgroundColor: isDarkMode ? '#1a1a1a' : '#ffffff' }}
+      />
       <img
-        src={src}
+        src={currentSrc}
         alt={alt}
-        className={`w-full h-full object-cover transition-opacity duration-300 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
-        }`}
+        className="w-full h-full object-cover transition-opacity duration-300 cursor-pointer"
         onClick={onClick}
-        onLoad={() => setIsLoading(false)}
         loading="eager"
         style={{ aspectRatio: '4/3' }}
       />
-      <div className="absolute top-2 right-2 z-10">
-        {isPaused ? (
-          <PlayIcon className="w-6 h-6 text-[#222222]" />
-        ) : (
-          <PauseIcon className="w-6 h-6 text-[#222222]" />
-        )}
-      </div>
     </div>
   );
-});
+};
 
 const ProjectModal: React.FC<ProjectModalProps> = ({
   isOpen,
@@ -69,10 +83,23 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   isPaused,
   togglePause,
 }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(
-    document.documentElement.classList.contains('dark')
-  );
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(document.documentElement.classList.contains('dark'));
   const { language } = useLanguage();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const handleClose = useCallback(() => {
+    setIsModalVisible(false);
+    setIsClosing(true);
+
+    const timer = setTimeout(() => {
+      onClose();
+      setIsClosing(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [onClose]);
 
   const handleDotClick = useCallback((index: number) => {
     setCurrentImageIndex(index);
@@ -80,6 +107,23 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       togglePause();
     }
   }, [isPaused, setCurrentImageIndex, togglePause]);
+
+  const handleVideoPlay = () => {
+    setIsVideoPlaying(true);
+    if (!isPaused)
+    {
+      togglePause(); // Pause the image slider when the video is playing
+    }
+  };
+
+  const handleVideoPause = () => {
+    setIsVideoPlaying(false);
+  };
+
+  const handleVideoEnd = () => {
+    setIsVideoPlaying(false);
+    togglePause();
+  };
 
   useEffect(() => {
     const handleThemeChange = (e: MediaQueryListEvent) => {
@@ -89,10 +133,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     mediaQuery.addEventListener('change', handleThemeChange);
 
-    return () => {
-      mediaQuery.removeEventListener('change', handleThemeChange);
-    };
+    return () => mediaQuery.removeEventListener('change', handleThemeChange);
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        setIsModalVisible(true);
+      }, 10);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen && selectedProject) {
@@ -108,56 +158,112 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
     return (
       <div
-        className="dark:bg-[#1a1a1a] bg-white rounded-lg p-6 max-w-md w-full"
+        className="dark:bg-[#1a1a1a] bg-white rounded-lg p-6 max-w-md w-full transition-all duration-500 ease-in-out transform"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-2xl font-bold mb-4 dark:text-white text-gray-700 text-center">
-          {selectedProject.title}
+          {selectedProject.title[language]}
         </h2>
         <div className="flex items-center justify-center mb-4">
-          <div className="animated-gradient-border">
-            <ProjectImage
-              src={selectedProject.images[currentImageIndex]}
-              alt={selectedProject.title}
-              onClick={togglePause}
-              isPaused={isPaused}
-            />
+          <div className="shadow-md animated-gradient-border">
+            {selectedProject.images[currentImageIndex]?.endsWith('.mp4') ? (
+              // If the current item is a video
+              <video
+                src={selectedProject.images[currentImageIndex]}
+                autoPlay
+                onPlay={handleVideoPlay}
+                onPause={handleVideoPause}
+                onEnded={handleVideoEnd}
+                className="w-full h-full object-cover rounded-xl"
+              />
+            ) : (
+              // If it's an image
+              <ProjectImage
+                src={selectedProject.images[currentImageIndex]}
+                alt={selectedProject.title[language]}
+                onClick={togglePause}
+              />
+            )}
           </div>
         </div>
-        <div className="flex justify-center mb-4">
-          {selectedProject.images.map((_, index) => {
-            const gradientColor = getGradientColor(index, selectedProject.images.length, isDarkMode);
-            return (
-              <div
-                key={index}
-                className="w-3 h-3 rounded-full mx-1 cursor-pointer"
-                style={{
-                  backgroundColor: index === currentImageIndex ? gradientColor : 'rgb(200, 200, 200)',
-                }}
-                onClick={() => handleDotClick(index)}
-              />
-            );
-          })}
+  
+        {/* Dots to navigate images/video */}
+        <div className="flex items-center justify-center mb-2">
+          <div className="flex items-center space-x-2">
+            {selectedProject.images.map((_, index) => {
+              const isActive = index === currentImageIndex;
+  
+              return (
+                <div
+                  key={index}
+                  className="relative w-2.5 h-2.5 rounded-full cursor-pointer transition-all duration-300"
+                  onClick={() => handleDotClick(index)} // Click a dot to navigate
+                >
+                  <div
+                    className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                      isActive ? 'opacity-100 scale-125' : 'opacity-0 scale-100'
+                    }`}
+                    style={{ backgroundColor: getGradientColor(index, selectedProject.images.length, isDarkMode) }}
+                  />
+                  <div
+                    className={`absolute inset-0 rounded-full transition-all duration-300 ${isActive ? 'opacity-0' : 'opacity-100'}`}
+                    style={{ backgroundColor: 'rgb(200, 200, 200)' }}
+                  />
+                </div>
+              );
+            })}
+            <button
+              className="flex items-center justify-center shadow-sm rounded-full dark:text-gray-300 text-gray-700 hover:scale-105 transition-transform duration-300"
+              onClick={togglePause}
+            >
+              {isPaused ? <PlayIcon className="w-5 h-5" /> : <PauseIcon className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
-        <p className="dark:text-white text-gray-700 text-center">
+        <p className="dark:text-white text-gray-700 text-center mb-4">
           {language === 'da' ? selectedProject.description.da : selectedProject.description.en}
         </p>
-        <button
-          className="mt-4 px-4 py-2 rounded dark:bg-gray-300 dark:text-gray-700 bg-gray-300 text-gray-700 mx-auto block hover:scale-105 transition-transform duration-300"
-          onClick={onClose}
-        >
-          {language === 'da' ? 'Luk' : 'Close'}
-        </button>
+        <div className="flex justify-between items-center mt-4">
+          <div className="flex space-x-2">
+            {selectedProject.languages.map((language, index) => (
+              <div
+                key={index}
+                className="shadow-sm p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg hover:scale-105 transition-transform duration-300"
+              >
+                <div className="bg-white dark:bg-[#1a1a1a] p-1 rounded-lg flex items-center justify-center w-10 h-10">
+                  <img
+                    src={languageLogos[language as keyof typeof languageLogos] || toolsLogos[language as keyof typeof toolsLogos]}
+                    alt={language}
+                    className="w-6 h-6"
+                    onError={(e) => {
+                      e.currentTarget.src = '/path/to/default-logo.png';
+                      e.currentTarget.alt = 'Image not found';
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] hover:scale-105 transition-transform duration-300">
+            <button
+              className="shadow-sm px-4 py-2 rounded bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 transition-transform duration-300"
+              onClick={handleClose}
+            >
+              {language === 'da' ? 'Luk' : 'Close'}
+            </button>
+          </div>
+        </div>
       </div>
     );
-  }, [selectedProject, currentImageIndex, isDarkMode, language, isPaused, handleDotClick, onClose, togglePause]);
+  }, [selectedProject, currentImageIndex, isDarkMode, language, isPaused, handleDotClick, handleClose, togglePause, isVideoPlaying]);
+  
 
-  if (!isOpen || !selectedProject) return null;
+  if (!isOpen && !isClosing) return null;
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 overflow-y-auto"
-      onClick={onClose}
+      className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 overflow-y-auto transition-opacity duration-500 ease-in-out ${isModalVisible && !isClosing ? 'opacity-100' : 'opacity-0'}`}
+      onClick={handleClose}
     >
       <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg p-[2px] mx-4 sm:mx-0 my-8">
         {modalContent}

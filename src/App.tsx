@@ -11,9 +11,11 @@ import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
 
 interface Project {
-  title: string;
+  title: { en: string; da: string };
   description: { en: string; da: string };
   images: string[];
+  video?: string;
+  languages: string[];
 }
 
 function App() {

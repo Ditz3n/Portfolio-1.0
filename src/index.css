@@ -64,7 +64,7 @@ html {
   background: linear-gradient(#131219, #131219) padding-box, 
               linear-gradient(var(--angle), #77a1d3, #79cbca, #e684ae) border-box;
   animation: rotate 8s linear infinite;
-  z-index: 100;
+  z-index: -1;
 }
 
 @keyframes rotate {

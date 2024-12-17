@@ -16,7 +16,7 @@ export default function About() {
             {language === 'da' ? (
               <>
                 <p>
-                  Hej! Jeg er Mads. Jeg er i øjeblikket softwareingeniørstuderende på Aarhus Universitet, 
+                  Hej! Jeg hedder Mads. Jeg er i øjeblikket softwareingeniørstuderende på Aarhus Universitet, 
                   hvor jeg specialiserer mig i webudvikling og softwarearkitektur.
                 </p>
                 <p>
@@ -25,7 +25,7 @@ export default function About() {
                   med særlig fokus på React og moderne frontend-udvikling.
                 </p>
                 <p>
-                  Ved siden af mine studier arbejder jeg på forskellige personlige projekter, 
+                  Ved siden af mit studie arbejder jeg på forskellige personlige projekter, 
                   hvor jeg eksperimenterer med nye teknologier og forbedrer mine færdigheder. 
                   Denne hjemmeside er et af disse projekter!
                 </p>

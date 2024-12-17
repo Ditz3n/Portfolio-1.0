@@ -9,10 +9,10 @@ const Contact = () => {
         <h2 className="text-5xl md:text-6xl font-bold mb-12 text-gray-800 dark:text-white">
           {language === 'da' ? 'Kontakt' : 'Contact'}
         </h2>
-        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg:max-w-[700px] transition-all duration-300">
-          {language === 'da' ? 'Du kan kontakte mig på følgende platforme:' : 'You can contact me on the following platforms:'}
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300">
+          {language === 'da' ? 'Skulle du have lyst til at kontakte mig, kan dette gøres på disse platforme:' : 'If you would like to contact me, you can do so on these platforms:'}
         </p>
-        <div className="flex flex-col xs:grid xs:grid-cols-5 md:flex md:flex-col gap-4 rounded sm:min-w-[450px] lg:min-w-[700px]">
+        <div className="flex flex-col xs:grid xs:grid-cols-5 md:flex md:flex-col gap-4 rounded sm:min-w-[450px] lg+:min-w-[700px]">
    
           {/* LinkedIn */}
           <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[2px] xs:pr-[2px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[1.5px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[2px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2.5px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
@@ -84,6 +84,27 @@ const Contact = () => {
               <span className="hidden md:block">Discord</span>
             </div>
           </button>
+          </div>
+
+          {/* Reddit */}
+          <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
+            <button
+              type="button"
+              onClick={() => window.open("https://www.reddit.com/user/Ditz3n", "_blank")}
+              className="flex items-center justify-center w-full h-full bg-gray-50 dark:bg-[#222222] text-gray-800 dark:text-white rounded-[5px] px-4 py-2 text-xs font-medium uppercase leading-normal shadow-md focus:outline-none focus:ring-0 box-border transition-all duration-300 ease-in-out hover:bg-gray-100 dark:hover:bg-[#272727]"
+            >
+              <div className="flex items-center justify-center md:flex-row md:space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 512 512"
+                  className="h-4 w-4"
+                >
+                  <path d="M373 138.6c-25.2 0-46.3-17.5-51.9-41l0 0c-30.6 4.3-54.2 30.7-54.2 62.4l0 .2c47.4 1.8 90.6 15.1 124.9 36.3c12.6-9.7 28.4-15.5 45.5-15.5c41.3 0 74.7 33.4 74.7 74.7c0 29.8-17.4 55.5-42.7 67.5c-2.4 86.8-97 156.6-213.2 156.6S45.5 410.1 43 323.4C17.6 311.5 0 285.7 0 255.7c0-41.3 33.4-74.7 74.7-74.7c17.2 0 33 5.8 45.7 15.6c34-21.1 76.8-34.4 123.7-36.4l0-.3c0-44.3 33.7-80.9 76.8-85.5C325.8 50.2 347.2 32 373 32c29.4 0 53.3 23.9 53.3 53.3s-23.9 53.3-53.3 53.3zM157.5 255.3c-20.9 0-38.9 20.8-40.2 47.9s17.1 38.1 38 38.1s36.6-9.8 37.8-36.9s-14.7-49.1-35.7-49.1zM395 303.1c-1.2-27.1-19.2-47.9-40.2-47.9s-36.9 22-35.7 49.1c1.2 27.1 16.9 36.9 37.8 36.9s39.3-11 38-38.1zm-60.1 70.8c1.5-3.6-1-7.7-4.9-8.1c-23-2.3-47.9-3.6-73.8-3.6s-50.8 1.3-73.8 3.6c-3.9 .4-6.4 4.5-4.9 8.1c12.9 30.8 43.3 52.4 78.7 52.4s65.8-21.6 78.7-52.4z" />
+                </svg>
+                <span className="hidden md:block">Reddit</span>
+              </div>
+            </button>
           </div>
           
           {/* Email */}

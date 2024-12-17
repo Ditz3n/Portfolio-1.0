@@ -9,6 +9,7 @@ import gitLogo from '../../assets/logos/github_logo.png'
 import gitlabLogo from '../../assets/logos/gitlab_logo.png'
 import dockerLogo from '../../assets/logos/docker_logo.png'
 import azureLogo from '../../assets/logos/azure_data_studio_logo.png'
+import clerkLogo from '../../assets/logos/clerk_logo.png'
 
 // Funktion til at tjekke hvilket sprog brugerens system bruger
 const Tools = () => {
@@ -45,6 +46,10 @@ const Tools = () => {
       logoUrl: dockerLogo 
     },
     { 
+      name: 'Clerk', 
+      logoUrl: clerkLogo 
+    },
+    { 
       name: 'Azure Data Studio', 
       logoUrl: azureLogo 
     },
@@ -58,8 +63,8 @@ const Tools = () => {
       
       <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300">
         {language === 'da' 
-          ? 'Herunder kan du se de værktøjer og IDE\'er, jeg har erfaring med.'
-          : 'Below you can see the tools and IDEs I have experience with.'}
+          ? 'Herunder kan du se de værktøjer og IDE\'er, jeg har erfaring med. Som i det tidligere afsnit, er dem, der står først, er de, jeg har mest erfaring med.'
+          : 'Below you can see the tools and IDEs I have experience with. As in the previous section, the ones listed first are the ones I have the most experience with.'}
       </p>
 
       {/* Visning af værktøjer i en grid */}
