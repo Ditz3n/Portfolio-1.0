@@ -34,7 +34,7 @@ const MediaWrapper = ({
   alt,
   onClick,
   type,
-  autoPlay = false,
+  autoPlay = true,
   onEnded,
 }: {
   src: string;
