@@ -286,12 +286,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
         <p className="dark:text-white text-gray-700 text-center mb-4">
           {language === 'da' ? selectedProject.description.da : selectedProject.description.en}
         </p>
-        <div className={`flex ${languages.length > 5 ? 'flex-wrap justify-center' : 'justify-between'} items-center mt-4`}>
-          <div className={`flex ${languages.length > 5 ? 'flex-wrap justify-center space-x-2 mb-4' : 'space-x-2'}`}>
+        <div className={`flex flex-wrap justify-center items-center mt-4`}>
+          <div className={`flex flex-wrap justify-center items-center`}>
             {languages.map((language, index) => (
               <div
                 key={index}
-                className="shadow-sm p-[2px] xs:pt/[2px] xs:pb/[1.5px] xs:pl/[1.5px] xs:pr/[1.5px] sm:pt/[1.5px] sm:pb/[2px] sm:pl/[2px] sm:pr/[1.5px] md:pt/[1.5px] md:pb/[1.5px] md:pl/[1.5px] md:pr/[1.5px] lg:pt/[1.5px] lg:pb/[2px] lg:pl/[1.5px] lg:pr/[1.5px] xl:pt/[2.5px] xl:pb/[2.5px] xl:pl/[2.5px] xl:pr/[2.5px] 2xl:pt/[2.5px] 2xl:pb/[2px] 2xl:pl/[2.5px] 2xl:pr/[2.5px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg hover:scale-105 transition-transform duration-300"
+                className="shadow-sm p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg hover:scale-105 transition-transform duration-300 mx-2 my-2"
               >
                 <div className="bg-white dark:bg-[#1a1a1a] p-1 rounded-lg flex items-center justify-center w-10 h-10">
                   <img
@@ -307,23 +307,23 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               </div>
             ))}
           </div>
-          <div className={`flex space-x-2`}>
+          <div className="w-full flex justify-center items-center space-x-4 mt-4">
             {selectedProject.pdf && (
               <div className="p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-md">
                 <button
-                  className="shadow-sm px-[18px] py-2.5 rounded bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200"
+                  className="shadow-sm px-[18px] py-2 rounded bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200 flex items-center"
                   onClick={() => window.open(selectedProject.pdf, '_blank')}
                 >
-                  <DocumentTextIcon className="w-5 h-5" />
+                  <DocumentTextIcon className="w-5 h-[28px] mx-2" />
                 </button>
               </div>
             )}
             <div className="p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-md">
               <button
-                className="shadow-sm px-4 py-2 rounded bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200"
+                className="shadow-sm px-4 py-2.5 rounded bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200 flex items-center"
                 onClick={handleClose}
               >
-                {language === 'da' ? 'Luk' : 'Close'}
+                <span className="mx-2">{language === 'da' ? 'Luk' : 'Close'}</span>
               </button>
             </div>
           </div>
