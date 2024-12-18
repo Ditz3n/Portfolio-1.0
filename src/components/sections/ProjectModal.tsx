@@ -80,12 +80,6 @@ const MediaWrapper = ({
     return () => mediaQuery.removeEventListener('change', handleThemeChange);
   }, []);
 
-  useEffect(() => {
-    if (type === 'video' && videoRef.current) {
-      videoRef.current.preload = 'auto';
-    }
-  }, [type]);
-
   return (
     <div className="relative w-full h-[350px] rounded-xl overflow-hidden">
       <div
@@ -112,7 +106,6 @@ const MediaWrapper = ({
           autoPlay={autoPlay}
           style={{ aspectRatio: '4/3' }}
           onEnded={onEnded}
-          preload="auto"
         />
       )}
     </div>
@@ -203,21 +196,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       }, 10);
     }
   }, [isOpen]);
-
-  // Preload images and videos
-  useEffect(() => {
-    if (isOpen && selectedProject) {
-      selectedProject.images.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-      if (selectedProject.video) {
-        const video = document.createElement('video');
-        video.src = selectedProject.video;
-        video.load();
-      }
-    }
-  }, [isOpen, selectedProject]);
 
   // Pause when the video is shown
   useEffect(() => {

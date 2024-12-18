@@ -9,6 +9,7 @@ import { TailwindIndicator } from './components/TailwindIndicator';
 import ProjectModal from './components/sections/ProjectModal';
 import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
+import electronicCarVideo from './assets/project/electronic_car/electronic_car7.mp4';
 
 interface Project {
   title: { en: string; da: string };
@@ -50,6 +51,23 @@ function App() {
       document.body.style.overflow = 'auto';
     }
   }, [isModalOpen]);
+
+  useEffect(() => {
+    // Preload videos
+    const preloadVideos = () => {
+      const videos = [
+        electronicCarVideo,
+      ];
+      videos.forEach((videoSrc) => {
+        const video = document.createElement('video');
+        video.src = videoSrc;
+        video.preload = 'auto';
+        video.load();
+      });
+    };
+
+    preloadVideos();
+  }, []);
 
   const openModal = (project: Project, initialIndex: number) => {
     setSelectedProject(project);
