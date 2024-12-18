@@ -27,6 +27,7 @@ import russianRoulette3 from '../../assets/project/electronic_russian_roulette/e
 import russianRoulette4 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette4.png'
 import russianRoulette5 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette5.png'
 import russianRoulette6 from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette6.png'
+import russianroulettedoc from '../../assets/project/electronic_russian_roulette/electronic_russian_roulette_documentation.pdf'
 
 // Smarthome Security System images
 import smarthome1 from '../../assets/project/smart_home_security/smart_home_security1.png'
@@ -98,6 +99,7 @@ const projectsData: Project[] = [
     },
     images: [russianRoulette1, russianRoulette2, russianRoulette3, russianRoulette4, russianRoulette5, russianRoulette6],
     languages: ['c', 'cpp', 'react', 'css'],
+    pdf: russianroulettedoc,
   },
   {
     title: {
