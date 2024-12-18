@@ -20,9 +20,11 @@ export default function About() {
                   hvor jeg specialiserer mig i webudvikling og softwarearkitektur.
                 </p>
                 <p>
-                  Min rejse inden for programmering begyndte med en fascination af webudvikling og 
-                  brugergrænseflader. Jeg har siden da arbejdet med forskellige teknologier og frameworks, 
-                  med særlig fokus på React og moderne frontend-udvikling.
+                Min rejse inden for software og hardware begyndte med en tidlig fascination af teknologi. 
+                Jeg husker tydeligt, hvordan jeg som 8-årig sparede sammen i to år for at købe min første computer, 
+                og kort tid efter blev jeg dybt interesseret i at udvikle de ting, jeg oplevede på skærmen. Siden 
+                da har jeg arbejdet med forskellige teknologier og frameworks, og har nu særligt fokuseret på React 
+                og moderne frontend-udvikling, da det er det område, jeg brænder mest for.
                 </p>
                 <p>
                   Ved siden af mit studie arbejder jeg på forskellige personlige projekter, 
@@ -37,9 +39,11 @@ export default function About() {
                   specializing in web development and software architecture.
                 </p>
                 <p>
-                  My journey into programming began with a fascination for web development and 
-                  user interfaces. Since then, I've worked with various technologies and frameworks, 
-                  with a particular focus on React and modern frontend development.
+                  My journey into software and hardware began with an early fascination with technology. 
+                  I vividly remember how, as an 8-year-old, I saved up for two years to buy my first computer, 
+                  and shortly after, I became deeply interested in developing the things I experienced on the screen. 
+                  Since then, I have worked with various technologies and frameworks, and have now focused particularly 
+                  on React and modern frontend development, as it is the area I am most passionate about.
                 </p>
                 <p>
                   Alongside my studies, I work on various personal projects, 
@@ -50,8 +54,8 @@ export default function About() {
             )}
           </div>
 
-          <div className="relative max-w-[300px] sm:max-w-[350px] lg+:max-w-[400px] mx-auto aspect-square transition-all duration-300 z-0">
-            <div className="shadow-lg animated-gradient-border group">
+          <div className="relative max-w-[300px] sm:max-w-[350px] lg+:max-w-[400px] mx-auto aspect-square transition-all duration-300 z-0 group">
+            <div className="shadow-lg animated-gradient-border">
               <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <img 
                   src={profilePic} 
@@ -70,4 +74,4 @@ export default function About() {
       </div>
     </section>
   )
-} 
+}

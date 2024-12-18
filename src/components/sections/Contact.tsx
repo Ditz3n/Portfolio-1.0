@@ -15,7 +15,7 @@ const Contact = () => {
         <div className="flex flex-col xs:grid xs:grid-cols-5 md:flex md:flex-col gap-4 rounded sm:min-w-[450px] lg+:min-w-[700px]">
    
           {/* LinkedIn */}
-          <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[2px] xs:pr-[2px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[1.5px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[2px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2.5px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
+          <div className="p-[2px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
               onClick={() => window.open("https://www.linkedin.com/in/mads-villadsen-880792288/", "_blank")}
@@ -34,7 +34,7 @@ const Contact = () => {
           </div>
 
           {/* Facebook */}
-          <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[2px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[1.5px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2.5px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
+          <div className="p-[2px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
               onClick={() => window.open("https://www.facebook.com/Ditz3n/?locale=da_DK", "_blank")}
@@ -50,7 +50,7 @@ const Contact = () => {
           </div>
 
           {/* GitHub */}
-          <div className="p-[2px] xs:pl-[2px] xs:pr-[1.5px] xs:pb-[1.5px] xs:pt-[2px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[1.5px] sm:pr-[1.5px] md:pt-[2px] md:pb-[2px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2.5px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
+          <div className="p-[2px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
               onClick={() => window.open("https://github.com/Ditz3n", "_blank")}
@@ -66,7 +66,7 @@ const Contact = () => {
           </div>
 
           {/* Discord */}
-          <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
+          <div className="p-[2px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
               onClick={() => window.open("https://discordlookup.com/user/225262706486149120", "_blank")}
@@ -87,7 +87,7 @@ const Contact = () => {
           </div>
 
           {/* Reddit */}
-          <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
+          <div className="p-[2px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
               onClick={() => window.open("https://www.reddit.com/user/Ditz3n", "_blank")}
@@ -108,7 +108,7 @@ const Contact = () => {
           </div>
           
           {/* Email */}
-          <div className="p-[2px] xs:pt-[2px] xs:pl-[2px] xs:pb-[1.5px] xs:pr-[2px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[1.5px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2.5px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
+          <div className="p-[2px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
             <button
               type="button"
               onClick={() => window.location.href = "mailto:mvmads@gmail.com"}

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
+import { CSSTransition } from 'react-transition-group'
 
 interface Course {
   id: string
@@ -55,15 +56,12 @@ const Education = () => {
     { id: 'SW7BAC-01', name: language === 'da' ? 'Bachelorprojekt' : 'Bachelor Project', semester: 7, ects: 20, completed: false },
   ]
 
-  // Tilføj tilstand til at holde styr på åbne semestre
   const [openSemesters, setOpenSemesters] = useState<number[]>([])
 
-  // Beregn total ECTS og beståede ECTS
   const totalECTS = courses.reduce((acc, course) => acc + course.ects, 0)
   const completedECTS = courses.reduce((acc, course) => course.completed ? acc + course.ects : acc, 0)
   const progressPercentage = (completedECTS / totalECTS) * 100
 
-  // Helper function to group courses by semester
   const groupedCourses = courses.reduce((acc, course) => {
     if (!acc[course.semester]) {
       acc[course.semester] = [];
@@ -72,7 +70,6 @@ const Education = () => {
     return acc;
   }, {} as Record<number, Course[]>);
 
-  // Toggle function for opening/closing semesters
   const toggleSemester = (semesterNum: number) => {
     setOpenSemesters(prev => 
       prev.includes(semesterNum)
@@ -97,13 +94,13 @@ const Education = () => {
         <div className="w-full max-w-[350px] sm:max-w-[450px] lg+:max-w-[700px] transition-all duration-300 space-y-4">
           {Object.entries(groupedCourses).map(([semester, semesterCourses]) => {
             const semesterNum = Number(semester)
-            const isOpen = openSemesters.includes(semesterNum) // Check if the semester is open
+            const isOpen = openSemesters.includes(semesterNum)
             return (
               <div key={semester} className="relative rounded-lg shadow overflow-hidden p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423]">
                 <div className="bg-white dark:bg-[#1a1a1a] rounded-lg overflow-hidden">
                   <button
-                    onClick={() => toggleSemester(semesterNum)} // Toggle semester on click
-                    className="w-full px-4 py-4 flex items-center justify-between text-left bg-gray-50 dark:bg-[#222222] hover:bg-gray-100 dark:hover:bg-[#222222]/80 transition-colors duration-200"
+                    onClick={() => toggleSemester(semesterNum)}
+                    className="w-full px-4 py-4 flex items-center justify-between text-left bg-gray-50 dark:bg-[#222222] hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200"
                   >
                     <div className="flex items-center space-x-4">
                       <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
@@ -115,7 +112,12 @@ const Education = () => {
                     </div>
                   </button>
                   
-                  {isOpen && ( // Only show the courses if the semester is open
+                  <CSSTransition
+                    in={isOpen}
+                    timeout={300}
+                    classNames="semester"
+                    unmountOnExit
+                  >
                     <div className="border-t border-gray-200/50 dark:border-gray-700/50">
                       <table className="w-full">
                         <thead>
@@ -152,7 +154,7 @@ const Education = () => {
                         </tbody>
                       </table>
                     </div>
-                  )}
+                  </CSSTransition>
                 </div>
               </div>
             )
@@ -181,4 +183,4 @@ const Education = () => {
   )
 }
 
-export default Education 
+export default Education

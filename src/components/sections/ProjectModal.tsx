@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { PauseIcon, PlayIcon } from '@heroicons/react/24/solid';
+import React, { useEffect, useState, useCallback, useMemo, useRef } from 'react';
+import { PauseIcon, PlayIcon, ChevronLeftIcon, ChevronRightIcon, DocumentTextIcon } from '@heroicons/react/24/solid';
 import { useLanguage } from '../../context/LanguageContext';
 import { languageLogos, toolsLogos } from '../Languages';
 
@@ -9,6 +9,7 @@ interface Project {
   video?: string;
   images: string[];
   languages: string[];
+  pdf?: string;
 }
 
 interface ProjectModalProps {
@@ -28,22 +29,45 @@ const getGradientColor = (index: number, total: number, isDarkMode: boolean): st
   return `rgb(${Math.round(startColor.r + (endColor.r - startColor.r) * ratio)}, ${Math.round(startColor.g + (endColor.g - startColor.g) * ratio)}, ${Math.round(startColor.b + (endColor.b - startColor.b) * ratio)})`;
 };
 
-const ProjectImage = ({ src, alt, onClick }: { src: string; alt: string; onClick: () => void; }) => {
+const MediaWrapper = ({
+  src,
+  alt,
+  onClick,
+  type,
+  autoPlay = false,
+  onEnded,
+}: {
+  src: string;
+  alt: string;
+  onClick: () => void;
+  type: 'image' | 'video';
+  autoPlay?: boolean;
+  onEnded?: () => void;
+}) => {
   const [currentSrc, setCurrentSrc] = useState(src);
   const [isFading, setIsFading] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(document.documentElement.classList.contains('dark'));
+  const [isLoaded, setIsLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (currentSrc !== src) {
       setIsFading(true);
+      setIsLoaded(false);
       const fadeTimer = setTimeout(() => {
         setCurrentSrc(src);
         setIsFading(false);
+
+        // For video, reset play state and auto-play
+        if (type === 'video' && videoRef.current) {
+          videoRef.current.currentTime = 0;
+          videoRef.current.play();
+        }
       }, 300);
 
       return () => clearTimeout(fadeTimer);
     }
-  }, [src]);
+  }, [src, type]);
 
   useEffect(() => {
     const handleThemeChange = (e: MediaQueryListEvent) => {
@@ -57,19 +81,33 @@ const ProjectImage = ({ src, alt, onClick }: { src: string; alt: string; onClick
   }, []);
 
   return (
-    <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden">
+    <div className="relative w-full h-[350px] rounded-xl overflow-hidden">
       <div
-        className={`absolute inset-0 transition-opacity duration-300 ${isFading ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 transition-opacity duration-300 z-10 ${isFading ? 'opacity-100' : 'opacity-0'}`}
         style={{ backgroundColor: isDarkMode ? '#1a1a1a' : '#ffffff' }}
       />
-      <img
-        src={currentSrc}
-        alt={alt}
-        className="w-full h-full object-cover transition-opacity duration-300 cursor-pointer"
-        onClick={onClick}
-        loading="eager"
-        style={{ aspectRatio: '4/3' }}
-      />
+      {type === 'image' ? (
+        <img
+          src={currentSrc}
+          alt={alt}
+          className={`w-full h-full object-cover transition-opacity duration-300 cursor-pointer ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onClick={onClick}
+          onLoad={() => setIsLoaded(true)}
+          loading="eager"
+          style={{ aspectRatio: '4/3' }}
+        />
+      ) : (
+        <video
+          ref={videoRef}
+          src={currentSrc}
+          className="w-full h-full object-cover cursor-pointer"
+          onClick={onClick}
+          playsInline
+          autoPlay={autoPlay}
+          style={{ aspectRatio: '4/3' }}
+          onEnded={onEnded}
+        />
+      )}
     </div>
   );
 };
@@ -88,6 +126,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [hasPausedForVideo, setHasPausedForVideo] = useState(false);
 
   const handleClose = useCallback(() => {
     setIsModalVisible(false);
@@ -108,21 +147,35 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     }
   }, [isPaused, setCurrentImageIndex, togglePause]);
 
-  const handleVideoPlay = () => {
-    setIsVideoPlaying(true);
-    if (!isPaused)
-    {
-      togglePause(); // Pause the image slider when the video is playing
+  const handleMediaInteraction = () => {
+    if (!isVideoPlaying) {
+      togglePause();
     }
-  };
-
-  const handleVideoPause = () => {
-    setIsVideoPlaying(false);
   };
 
   const handleVideoEnd = () => {
     setIsVideoPlaying(false);
     togglePause();
+  };
+
+  const handlePrev = () => {
+    if (selectedProject) {
+      const newIndex = currentImageIndex > 0 ? currentImageIndex - 1 : selectedProject.images.length - 1;
+      setCurrentImageIndex(newIndex);
+      if (!isPaused) {
+        togglePause();
+      }
+    }
+  };
+
+  const handleNext = () => {
+    if (selectedProject) {
+      const newIndex = currentImageIndex < selectedProject.images.length - 1 ? currentImageIndex + 1 : 0;
+      setCurrentImageIndex(newIndex);
+      if (!isPaused) {
+        togglePause();
+      }
+    }
   };
 
   useEffect(() => {
@@ -144,55 +197,68 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     }
   }, [isOpen]);
 
+  // Preload images and videos
   useEffect(() => {
     if (isOpen && selectedProject) {
       selectedProject.images.forEach(src => {
         const img = new Image();
         img.src = src;
       });
+      if (selectedProject.video) {
+        const video = document.createElement('video');
+        video.src = selectedProject.video;
+        video.load();
+      }
     }
   }, [isOpen, selectedProject]);
+
+  // Pause when the video is shown
+  useEffect(() => {
+    if (selectedProject && selectedProject.images[currentImageIndex]?.endsWith('.mp4') && !isPaused && !hasPausedForVideo) {
+      togglePause();
+      setHasPausedForVideo(true);
+    } else if (selectedProject && !selectedProject.images[currentImageIndex]?.endsWith('.mp4')) {
+      setHasPausedForVideo(false);
+    }
+  }, [currentImageIndex, selectedProject, isPaused, togglePause, hasPausedForVideo]);
 
   const modalContent = useMemo(() => {
     if (!selectedProject) return null;
 
+    const isCurrentItemVideo = selectedProject.images[currentImageIndex]?.endsWith('.mp4');
+    const languages = selectedProject.languages;
+
     return (
       <div
-        className="dark:bg-[#1a1a1a] bg-white rounded-lg p-6 max-w-md w-full transition-all duration-500 ease-in-out transform"
+        className={`dark:bg-[#1a1a1a] bg-white rounded-lg p-6 max-w-md w-full transition-all duration-500 ease-in-out transform max-h-[80vh] min-h-[87.2vh] overflow-y-auto`}
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-2xl font-bold mb-4 dark:text-white text-gray-700 text-center">
           {selectedProject.title[language]}
         </h2>
-        <div className="flex items-center justify-center mb-4">
-          <div className="shadow-md animated-gradient-border">
-            {selectedProject.images[currentImageIndex]?.endsWith('.mp4') ? (
-              // If the current item is a video
-              <video
-                src={selectedProject.images[currentImageIndex]}
-                autoPlay
-                onPlay={handleVideoPlay}
-                onPause={handleVideoPause}
-                onEnded={handleVideoEnd}
-                className="w-full h-full object-cover rounded-xl"
-              />
-            ) : (
-              // If it's an image
-              <ProjectImage
-                src={selectedProject.images[currentImageIndex]}
-                alt={selectedProject.title[language]}
-                onClick={togglePause}
-              />
-            )}
-          </div>
+        <div className="shadow-md animated-gradient-border w-full h-full mb-4">
+          <MediaWrapper
+            src={selectedProject.images[currentImageIndex]}
+            alt={selectedProject.title[language]}
+            onClick={handleMediaInteraction}
+            type={isCurrentItemVideo ? 'video' : 'image'}
+            autoPlay={isCurrentItemVideo}
+            onEnded={handleVideoEnd}
+          />
         </div>
-  
-        {/* Dots to navigate images/video */}
-        <div className="flex items-center justify-center mb-2">
+        <div className="flex items-center justify-between mb-4">
+          <div className="p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-md">
+            <button
+              className="bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 p-2 rounded shadow-sm hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200"
+              onClick={handlePrev}
+            >
+              <ChevronLeftIcon className="w-5 h-5" />
+            </button>
+          </div>
           <div className="flex items-center space-x-2">
             {selectedProject.images.map((_, index) => {
               const isActive = index === currentImageIndex;
-  
+
               return (
                 <div
                   key={index}
@@ -212,23 +278,35 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 </div>
               );
             })}
-            <button
-              className="flex items-center justify-center shadow-sm rounded-full dark:text-gray-300 text-gray-700 hover:scale-105 transition-transform duration-300"
-              onClick={togglePause}
-            >
-              {isPaused ? <PlayIcon className="w-5 h-5" /> : <PauseIcon className="w-5 h-5" />}
-            </button>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-md">
+              <button
+                className="bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 p-2 rounded shadow-sm hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200"
+                onClick={togglePause}
+              >
+                {isPaused ? <PlayIcon className="w-5 h-5" /> : <PauseIcon className="w-5 h-5" />}
+              </button>
+            </div>
+            <div className="p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-md">
+              <button
+                className="bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 p-2 rounded shadow-sm hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200"
+                onClick={handleNext}
+              >
+                <ChevronRightIcon className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
         <p className="dark:text-white text-gray-700 text-center mb-4">
           {language === 'da' ? selectedProject.description.da : selectedProject.description.en}
         </p>
-        <div className="flex justify-between items-center mt-4">
-          <div className="flex space-x-2">
-            {selectedProject.languages.map((language, index) => (
+        <div className={`flex ${languages.length > 5 ? 'flex-wrap justify-center' : 'justify-between'} items-center mt-4`}>
+          <div className={`flex ${languages.length > 5 ? 'flex-wrap justify-center space-x-2 mb-4' : 'space-x-2'}`}>
+            {languages.map((language, index) => (
               <div
                 key={index}
-                className="shadow-sm p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg hover:scale-105 transition-transform duration-300"
+                className="shadow-sm p-[2px] xs:pt/[2px] xs:pb/[1.5px] xs:pl/[1.5px] xs:pr/[1.5px] sm:pt/[1.5px] sm:pb/[2px] sm:pl/[2px] sm:pr/[1.5px] md:pt/[1.5px] md:pb/[1.5px] md:pl/[1.5px] md:pr/[1.5px] lg:pt/[1.5px] lg:pb/[2px] lg:pl/[1.5px] lg:pr/[1.5px] xl:pt/[2.5px] xl:pb/[2.5px] xl:pl/[2.5px] xl:pr/[2.5px] 2xl:pt/[2.5px] 2xl:pb/[2px] 2xl:pl/[2.5px] 2xl:pr/[2.5px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg hover:scale-105 transition-transform duration-300"
               >
                 <div className="bg-white dark:bg-[#1a1a1a] p-1 rounded-lg flex items-center justify-center w-10 h-10">
                   <img
@@ -244,19 +322,30 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               </div>
             ))}
           </div>
-          <div className="p-[2px] xs:pt-[2px] xs:pb-[1.5px] xs:pl-[1.5px] xs:pr-[1.5px] sm:pt-[1.5px] sm:pb-[2px] sm:pl-[2px] sm:pr-[1.5px] md:pt-[1.5px] md:pb-[1.5px] md:pl-[1.5px] md:pr-[1.5px] lg:pt-[1.5px] lg:pb-[2px] lg:pl-[1.5px] lg:pr-[1.5px] xl:pt-[2.5px] xl:pb-[2.5px] xl:pl-[2.5px] xl:pr-[2.5px] 2xl:pt-[2.5px] 2xl:pb-[2px] 2xl:pl-[2.5px] 2xl:pr-[2.5px] rounded-md bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] hover:scale-105 transition-transform duration-300">
-            <button
-              className="shadow-sm px-4 py-2 rounded bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 transition-transform duration-300"
-              onClick={handleClose}
-            >
-              {language === 'da' ? 'Luk' : 'Close'}
-            </button>
+          <div className={`flex space-x-2`}>
+            {selectedProject.pdf && (
+              <div className="p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-md">
+                <button
+                  className="shadow-sm px-[18px] py-2.5 rounded bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200"
+                  onClick={() => window.open(selectedProject.pdf, '_blank')}
+                >
+                  <DocumentTextIcon className="w-5 h-5" />
+                </button>
+              </div>
+            )}
+            <div className="p-[2px] bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-md">
+              <button
+                className="shadow-sm px-4 py-2 rounded bg-gray-50 dark:bg-[#222222] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#272727] transition-colors duration-200"
+                onClick={handleClose}
+              >
+                {language === 'da' ? 'Luk' : 'Close'}
+              </button>
+            </div>
           </div>
         </div>
       </div>
     );
   }, [selectedProject, currentImageIndex, isDarkMode, language, isPaused, handleDotClick, handleClose, togglePause, isVideoPlaying]);
-  
 
   if (!isOpen && !isClosing) return null;
 
@@ -265,7 +354,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 overflow-y-auto transition-opacity duration-500 ease-in-out ${isModalVisible && !isClosing ? 'opacity-100' : 'opacity-0'}`}
       onClick={handleClose}
     >
-      <div className="bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg p-[2px] mx-4 sm:mx-0 my-8">
+      <div className={`bg-gradient-to-r from-[#77a1d3] via-[#79cbca] to-[#e684ae] dark:from-[#FF4E50] dark:to-[#F9D423] rounded-lg p-[2px] mx-4 sm:mx-0 my-8 ${selectedProject?.languages && selectedProject.languages.length > 5 ? 'max-w-lg' : 'max-w-md'}`}>
         {modalContent}
       </div>
     </div>

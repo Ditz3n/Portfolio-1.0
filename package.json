@@ -14,6 +14,7 @@
     "ldrs": "^1.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-transition-group": "^4.4.5",
     "tw-elements-react": "^1.0.0-alpha-end"
   },
   "devDependencies": {
@@ -21,6 +22,7 @@
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@types/react-transition-group": "^4.4.12",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.15.0",

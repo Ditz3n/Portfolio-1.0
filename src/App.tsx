@@ -13,9 +13,10 @@ import Footer from './components/sections/Footer';
 interface Project {
   title: { en: string; da: string };
   description: { en: string; da: string };
-  images: string[];
   video?: string;
+  images: string[];
   languages: string[];
+  pdf?: string;
 }
 
 function App() {
