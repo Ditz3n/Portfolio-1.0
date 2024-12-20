@@ -29,6 +29,10 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 - **useLanguage.ts:** 13 linjer kode
 - **useTheme.ts:** 13 linjer kode
 
+### /src/utils
+
+- **isMobile.ts:** 4 linjer kode
+
 ### /src/context
 
 - **LanguageProvider.tsx:** 24 linjer kode
@@ -46,7 +50,7 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 - **TailwindIndicator.tsx:** 15 linjer kode
 - **SectionNavigation.tsx:** 76 linjer kode
 - **LoadingScreen.tsx:** 22 linjer kode
-- **CursorEffect.tsx:** 181 linjer kode
+- **CursorEffect.tsx:** 176 linjer kode
 
 ### /src/components/sections
 
@@ -63,7 +67,7 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 
 ### Total 🔥
 
-- **Total linjer kode:** 2147 linjer kode
+- **Total linjer kode:** 2146 linjer kode
 
 # 🇺🇸 - Mads Villadsen - Portfolio 🌟
 
@@ -93,15 +97,19 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 ### /src/hooks
 
 - **useActiveSection.ts:** 34 lines of code
-- **useLanguage.ts:** 13 linjer kode
-- **useTheme.ts:** 13 linjer kode
+- **useLanguage.ts:** 13 lines of code
+- **useTheme.ts:** 13 lines of code
+
+### /src/utils
+
+- **isMobile.ts:** 4 lines of code
 
 ### /src/context
 
-- **LanguageProvider.tsx:** 24 linjer kode
-- **ThemeProvider.tsx:** 37 linjer kode
-- **languageContext.ts:** 14 linjer kode
-- **themeContext.ts:** 11 linjer kode
+- **LanguageProvider.tsx:** 24 lines of code
+- **ThemeProvider.tsx:** 37 lines of code
+- **languageContext.ts:** 14 lines of code
+- **themeContext.ts:** 11 lines of code
 
 ### /src/components
 
@@ -113,7 +121,7 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 - **TailwindIndicator.tsx:** 15 lines of code
 - **SectionNavigation.tsx:** 76 lines of code
 - **LoadingScreen.tsx:** 22 lines of code
-- **CursorEffect.tsx:** 181 lines of code
+- **CursorEffect.tsx:** 176 lines of code
 
 ### /src/components/sections
 
@@ -130,4 +138,4 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 
 ### Total 🔥
 
-- **Total lines of code:** 2147 lines of code
+- **Total lines of code:** 2146 lines of code
