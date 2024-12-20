@@ -19,8 +19,8 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 ### /src/context
 
 - **App.css:** 0 linjer kode
-- **App.tsx:** 143 linjer kode
-- **Index.css:** 124 linjer kode
+- **App.tsx:** 148 linjer kode
+- **Index.css:** 136 linjer kode
 - **main.tsx:** 19 linjer kode
 
 ### /src/hooks
@@ -46,6 +46,7 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 - **TailwindIndicator.tsx:** 15 linjer kode
 - **SectionNavigation.tsx:** 76 linjer kode
 - **LoadingScreen.tsx:** 22 linjer kode
+- **CursorEffect.tsx:** 181 linjer kode
 
 ### /src/components/sections
 
@@ -62,7 +63,7 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 
 ### Total 🔥
 
-- **Total linjer kode:** 1964 linjer kode
+- **Total linjer kode:** 2147 linjer kode
 
 # 🇺🇸 - Mads Villadsen - Portfolio 🌟
 
@@ -85,8 +86,8 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 ### /src/context
 
 - **App.css:** 0 lines of code
-- **App.tsx:** 143 lines of code
-- **Index.css:** 124 lines of code
+- **App.tsx:** 148 lines of code
+- **Index.css:** 136 lines of code
 - **main.tsx:** 19 lines of code
 
 ### /src/hooks
@@ -112,6 +113,7 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 - **TailwindIndicator.tsx:** 15 lines of code
 - **SectionNavigation.tsx:** 76 lines of code
 - **LoadingScreen.tsx:** 22 lines of code
+- **CursorEffect.tsx:** 181 lines of code
 
 ### /src/components/sections
 
@@ -128,4 +130,4 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 
 ### Total 🔥
 
-- **Total lines of code:** 1964 lines of code
+- **Total lines of code:** 2147 lines of code
