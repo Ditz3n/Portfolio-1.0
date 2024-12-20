@@ -58,7 +58,7 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 - **Contact.tsx:** 138 linjer kode
 - **Education.tsx:** 169 linjer kode
 - **Experience.tsx:** 32 linjer kode
-- **Footer.tsx:** 12 linjer kode
+- **Footer.tsx:** 18 linjer kode
 - **Home.tsx:** 90 linjer kode
 - **ProgrammingLanguages.tsx:** 41 linjer kode
 - **ProjectModal.tsx:** 385 linjer kode
@@ -67,7 +67,7 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 
 ### Total 🔥
 
-- **Total linjer kode:** 2146 linjer kode
+- **Total linjer kode:** 2152 linjer kode
 
 # 🇺🇸 - Mads Villadsen - Portfolio 🌟
 
@@ -129,7 +129,7 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 - **Contact.tsx:** 138 lines of code
 - **Education.tsx:** 169 lines of code
 - **Experience.tsx:** 32 lines of code
-- **Footer.tsx:** 12 lines of code
+- **Footer.tsx:** 18 lines of code
 - **Home.tsx:** 90 lines of code
 - **ProgrammingLanguages.tsx:** 41 lines of code
 - **ProjectModal.tsx:** 385 lines of code
@@ -138,4 +138,4 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 
 ### Total 🔥
 
-- **Total lines of code:** 2146 lines of code
+- **Total lines of code:** 2152 lines of code
