@@ -50,7 +50,7 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 - **TailwindIndicator.tsx:** 15 linjer kode
 - **SectionNavigation.tsx:** 76 linjer kode
 - **LoadingScreen.tsx:** 22 linjer kode
-- **CursorEffect.tsx:** 176 linjer kode
+- **CursorEffect.tsx:** 174 linjer kode
 
 ### /src/components/sections
 
@@ -67,7 +67,7 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 
 ### Total 🔥
 
-- **Total linjer kode:** 2156 linjer kode
+- **Total linjer kode:** 2154 linjer kode
 
 # 🇺🇸 - Mads Villadsen - Portfolio 🌟
 
@@ -121,7 +121,7 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 - **TailwindIndicator.tsx:** 15 lines of code
 - **SectionNavigation.tsx:** 76 lines of code
 - **LoadingScreen.tsx:** 22 lines of code
-- **CursorEffect.tsx:** 176 lines of code
+- **CursorEffect.tsx:** 174 lines of code
 
 ### /src/components/sections
 
@@ -138,4 +138,4 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 
 ### Total 🔥
 
-- **Total lines of code:** 2156 lines of code
+- **Total lines of code:** 2154 lines of code
