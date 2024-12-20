@@ -8,7 +8,6 @@ function CursorEffect({ isModalOpen }: { isModalOpen: boolean }) {
   const { theme } = useTheme();
   const cursorDotOutline = useRef<HTMLDivElement>(null);
   const cursorDot = useRef<HTMLDivElement>(null);
-  const requestRef = useRef<number>();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const cursorVisible = useRef(false);
   const cursorEnlarged = useRef(false);
@@ -106,6 +105,9 @@ function CursorEffect({ isModalOpen }: { isModalOpen: boolean }) {
       document.removeEventListener("mousedown", onMouseDown);
       document.removeEventListener("mouseup", onMouseUp);
     };
+    // Since the onMouseEnter and onMouseLeave functions are defined within the component and do not change, we can safely ignore this warning:
+    // 108:6  warning  React Hook useEffect has missing dependencies: 'onMouseEnter' and 'onMouseLeave'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Function to handle the cursors functionality inside the modal window
