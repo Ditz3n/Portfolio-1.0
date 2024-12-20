@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useTheme } from "../hooks/useTheme";
 import { isMobile } from "../utils/isMobile";
 
@@ -40,15 +40,15 @@ function CursorEffect({ isModalOpen }: { isModalOpen: boolean }) {
     }
   };
 
-  const onMouseEnter = () => {
+  const onMouseEnter = useCallback(() => {
     cursorVisible.current = true;
     toggleCursorVisibility();
-  };
+  }, []);
 
-  const onMouseLeave = () => {
+  const onMouseLeave = useCallback(() => {
     cursorVisible.current = false;
     toggleCursorVisibility();
-  };
+  }, []);
 
   const onMouseDown = () => {
     isMouseDown.current = true;
@@ -99,7 +99,7 @@ function CursorEffect({ isModalOpen }: { isModalOpen: boolean }) {
         document.removeEventListener("mouseup", onMouseUp);
       };
     }
-  }, []);
+  }, [onMouseEnter, onMouseLeave]);
 
   useEffect(() => {
     if (isModalOpen && !isMobile()) {
