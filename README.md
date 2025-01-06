@@ -6,6 +6,10 @@ Dette projekt er en personlig portefølje, der viser mine færdigheder og projek
 
 Formålet med denne portefølje er at præsentere mine projekter, værktøjer og erfaringer inden for softwareudvikling. Den giver også en platform for potentielle arbejdsgivere og samarbejdspartnere til at lære mere om mine færdigheder og baggrund.
 
+## Link
+
+For at komme til den interaktive hjemmeside: [ditz3n.github.io](https://ditz3n.github.io/). 🎉
+
 ## Funktioner ✨
 
 - **Responsiv design**: Porteføljen er designet til at fungere på forskellige enheder og skærmstørrelser. 📱💻
@@ -44,9 +48,9 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 
 - **AnimatedText.tsx:** 33 linjer kode
 - **CoursesData.ts:** 52 linjer kode
-- **ProjectsData.ts:** 133 linjer kode
+- **ProjectsData.ts:** 156 linjer kode
 - **ToolsData.ts:** 57 linjer kode
-- **LanguagesData.ts:** 72 linjer kode
+- **LanguagesData.ts:** 84 linjer kode
 - **TailwindIndicator.tsx:** 15 linjer kode
 - **SectionNavigation.tsx:** 76 linjer kode
 - **LoadingScreen.tsx:** 22 linjer kode
@@ -61,13 +65,13 @@ Formålet med denne portefølje er at præsentere mine projekter, værktøjer og
 - **Footer.tsx:** 22 linjer kode
 - **Home.tsx:** 90 linjer kode
 - **ProgrammingLanguages.tsx:** 41 linjer kode
-- **ProjectModal.tsx:** 385 linjer kode
+- **ProjectModal.tsx:** 388 linjer kode
 - **Projects.tsx:** 60 linjer kode
 - **Tools.tsx:** 48 linjer kode
 
 ### Total 🔥
 
-- **Total linjer kode:** 2154 linjer kode
+- **Total linjer kode:** 2192 linjer kode
 
 # 🇺🇸 - Mads Villadsen - Portfolio 🌟
 
@@ -76,6 +80,10 @@ This project is a personal portfolio showcasing my skills and projects as a soft
 ## Purpose 🎯
 
 The purpose of this portfolio is to present my projects, tools, and experiences in software development. It also provides a platform for potential employers and collaborators to learn more about my skills and background.
+
+## Link
+
+To access the interactive website: [ditz3n.github.io](https://ditz3n.github.io/). 🎉
 
 ## Features ✨
 
@@ -115,9 +123,9 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 
 - **AnimatedText.tsx:** 33 lines of code
 - **CoursesData.ts:** 52 lines of code
-- **ProjectsData.ts:** 133 lines of code
+- **ProjectsData.ts:** 156 lines of code
 - **ToolsData.ts:** 57 lines of code
-- **LanguagesData.ts:** 72 lines of code
+- **LanguagesData.ts:** 84 lines of code
 - **TailwindIndicator.tsx:** 15 lines of code
 - **SectionNavigation.tsx:** 76 lines of code
 - **LoadingScreen.tsx:** 22 lines of code
@@ -132,10 +140,10 @@ The purpose of this portfolio is to present my projects, tools, and experiences 
 - **Footer.tsx:** 22 lines of code
 - **Home.tsx:** 90 lines of code
 - **ProgrammingLanguages.tsx:** 41 lines of code
-- **ProjectModal.tsx:** 385 lines of code
+- **ProjectModal.tsx:** 388 lines of code
 - **Projects.tsx:** 60 lines of code
 - **Tools.tsx:** 48 lines of code
 
 ### Total 🔥
 
-- **Total lines of code:** 2154 lines of code
+- **Total lines of code:** 2192 lines of code

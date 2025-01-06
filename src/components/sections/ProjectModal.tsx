@@ -42,7 +42,9 @@ const NAME_MAPPING: { [key: string]: string } = {
   'javascript': 'JavaScript',
   'html': 'HTML',
   'css': 'CSS',
+  'tailwindcss': 'Tailwind CSS',
   'c': 'C',
+  'next.js': 'Next.js',
   'csharp': 'C#',
   'cpp': 'C++',
   'sql': 'SQL',
@@ -58,6 +60,7 @@ const NAME_MAPPING: { [key: string]: string } = {
   'gitlab': 'GitLab',
   'docker': 'Docker',
   'azure': 'Azure Data Studio',
+  'prisma': 'Prisma',
 };
 
 // Function to get the logo URL for a language or tool
